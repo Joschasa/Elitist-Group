@@ -166,7 +166,10 @@ function Summary:UpdateSingle(row)
 				row.talentInfo:SetFormattedText(L["Loading"])
 				row.talentInfo.icon:SetTexture(READY_CHECK_WAITING_TEXTURE)
 			elseif( not userData.unspentPoints ) then
-				row.talentInfo:SetFormattedText("%d/%d/%d (%s)", userData.talentTree1, userData.talentTree2, userData.talentTree3, specName)
+			-- FIXME: Fotten!
+				if(userData.talentTree1 ~= nil and userData.talentTree2 ~= nil and userData.talentTree3 ~= nil) then
+					row.talentInfo:SetFormattedText("%d/%d/%d (%s)", userData.talentTree1, userData.talentTree2, userData.talentTree3, specName)
+				end
 				row.talentInfo.icon:SetTexture(specIcon)
 				row.talentInfo.tooltip = string.format(L["%s, %s role."], specName, ElitistGroup.Talents.talentText[specType] or specType)
 			else

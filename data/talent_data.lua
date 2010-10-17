@@ -9,7 +9,7 @@ local function loadData()
 	local RANGE_DAMAGE = L["DPS, Ranged"]
 	local HEALER = L["Healer"]
 	local TANK = L["Tank"]
-	Talents.talentText = {["elemental-shaman"] = CASTER_DAMAGE, ["enhance-shaman"] = MELEE_DAMAGE, ["resto-shaman"] = HEALER, ["arcane-mage"] = CASTER_DAMAGE, ["fire-mage"] = CASTER_DAMAGE, ["frost-mage"] = CASTER_DAMAGE, ["afflict-warlock"] = CASTER_DAMAGE, ["demon-warlock"] = CASTER_DAMAGE, ["destro-warlock"] = CASTER_DAMAGE, ["balance-druid"] = CASTER_DAMAGE, ["cat-druid"] = MELEE_DAMAGE, ["bear-druid"] = TANK, ["resto-druid"] = HEALER, ["arms-warrior"] = MELEE_DAMAGE, ["fury-warrior"] = MELEE_DAMAGE, ["prot-warrior"] = TANK, ["assass-rogue"] = MELEE_DAMAGE, ["combat-rogue"] = MELEE_DAMAGE, ["subtlety-rogue"] = MELEE_DAMAGE, ["holy-paladin"] = HEALER, ["prot-paladin"] = TANK, ["ret-paladin"] = MELEE_DAMAGE, ["beast-hunter"] = RANGE_DAMAGE, ["marks-hunter"] = RANGE_DAMAGE, ["survival-hunter"] = RANGE_DAMAGE, ["disc-priest"] = HEALER, ["holy-priest"] = HEALER, ["shadow-priest"] = CASTER_DAMAGE, ["blood-dk"] = MELEE_DAMAGE, ["frost-dk"] = MELEE_DAMAGE, ["unholy-dk"] = MELEE_DAMAGE, ["tank-dk"] = TANK}
+	Talents.talentText = {["elemental-shaman"] = CASTER_DAMAGE, ["enhance-shaman"] = MELEE_DAMAGE, ["resto-shaman"] = HEALER, ["arcane-mage"] = CASTER_DAMAGE, ["fire-mage"] = CASTER_DAMAGE, ["frost-mage"] = CASTER_DAMAGE, ["afflict-warlock"] = CASTER_DAMAGE, ["demon-warlock"] = CASTER_DAMAGE, ["destro-warlock"] = CASTER_DAMAGE, ["balance-druid"] = CASTER_DAMAGE, ["cat-druid"] = MELEE_DAMAGE, ["bear-druid"] = TANK, ["resto-druid"] = HEALER, ["arms-warrior"] = MELEE_DAMAGE, ["fury-warrior"] = MELEE_DAMAGE, ["prot-warrior"] = TANK, ["assass-rogue"] = MELEE_DAMAGE, ["combat-rogue"] = MELEE_DAMAGE, ["subtlety-rogue"] = MELEE_DAMAGE, ["holy-paladin"] = HEALER, ["prot-paladin"] = TANK, ["ret-paladin"] = MELEE_DAMAGE, ["beast-hunter"] = RANGE_DAMAGE, ["marks-hunter"] = RANGE_DAMAGE, ["survival-hunter"] = RANGE_DAMAGE, ["disc-priest"] = HEALER, ["holy-priest"] = HEALER, ["shadow-priest"] = CASTER_DAMAGE, ["blood-dk"] = TANK, ["frost-dk"] = MELEE_DAMAGE, ["unholy-dk"] = MELEE_DAMAGE}
 
 	Talents.TANK = TANK
 	Talents.HEALER = HEALER
@@ -23,22 +23,22 @@ local function loadData()
 	-- This isn't really perfect, if a Druid tries to hybrid it up then it's hard for us to figure out what spec they are
 	-- a good idea might be to force set their role based on the assignment they chose when possible, and use this as a fallback
 	Talents.specOverride = {
-		["DEATHKNIGHT"] = {
+		--[[ ["DEATHKNIGHT"] = {
 			["required"] = 3,
 			["role"] = "tank-dk",
 			
 			[GetSpellInfo(16271)] = 5, -- Anticipation
 			[GetSpellInfo(49042)] = 5, -- Toughness
 			[GetSpellInfo(55225)] = 5, -- Blade Barrier
-		},
+		}, ]]---
 		["DRUID"] = {
 			["required"] = 3,
 			["role"] = "bear-druid",
 			
-			[GetSpellInfo(57881)] = 2, -- Natural Reaction
+			[GetSpellInfo(57878)] = 2, -- Natural Reaction
 			[GetSpellInfo(16929)] = 3, -- Thick Hide
 			[GetSpellInfo(61336)] = 1, -- Survival Instincts
-			[GetSpellInfo(57877)] = 3, -- Protector of the Pack
+			-- [GetSpellInfo(57877)] = 3, -- Protector of the Pack
 		},
 	}
 

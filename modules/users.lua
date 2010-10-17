@@ -39,8 +39,8 @@ local function sortAchievements(a, b)
 	local bName, _, _, _, _, _, _, bFlags = select(2, GetAchievementInfo(b))
 	local aEarned = userData.achievements[a] or 0
 	local bEarned = userData.achievements[b] or 0
-	local aStatistic = bit.band(aFlags, ACHIEVEMENT_FLAGS_STATISTIC) > 0
-	local bStatistic = bit.band(bFlags, ACHIEVEMENT_FLAGS_STATISTIC) > 0
+	local aStatistic = aFlags > 0
+	local bStatistic = bFlags > 0
 	
 	if( not aStatistic and not bStatistic ) then
 		return aEarned == bEarned and aName < bName or aEarned > bEarned
@@ -607,13 +607,13 @@ function Users:UpdateAchievementData()
 			local earned = userData.achievements[achievementID]
 			local mainEarned = userData.mainAchievements and userData.mainAchievements[achievementID]
 			if( mainEarned and userData.mainAchievements ) then
-				if( bit.band(flags, ACHIEVEMENT_FLAGS_STATISTIC) > 0 ) then
+				if( flags > 0 ) then
 					achievementTooltips[data.id] = achievementTooltips[data.id] .. "\n" .. string.format("|cffffffff[%d | %d]|r %s", mainEarned or 0, earned or 0, name)
 				else
 					achievementTooltips[data.id] = achievementTooltips[data.id] .. "\n" .. string.format("|cffffffff[%s | %s]|r %s", mainEarned == 1 and YES or NO, earned == 1 and YES or NO, name)
 				end
 			else
-				if( bit.band(flags, ACHIEVEMENT_FLAGS_STATISTIC) > 0 ) then
+				if( flags > 0 ) then
 					achievementTooltips[data.id] = achievementTooltips[data.id] .. "\n" .. string.format("|cffffffff[%d]|r %s", earned or 0, name)
 				else
 					achievementTooltips[data.id] = achievementTooltips[data.id] .. "\n" .. string.format("|cffffffff[%s]|r %s", earned == 1 and YES or NO, name)

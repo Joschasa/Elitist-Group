@@ -179,7 +179,7 @@ function Scan:INSPECT_ACHIEVEMENT_READY()
 		table.wipe(userData.achievements)
 		for achievementID in pairs(ElitistGroup.Dungeons.achievements) do
 			local id, _, _, _, _, _, _, _, flags = GetAchievementInfo(achievementID)
-			if( bit.band(flags, ACHIEVEMENT_FLAGS_STATISTIC) > 0 ) then
+			if( flags > 0 ) then
 				userData.achievements[achievementID] = tonumber(GetComparisonStatistic(id)) or nil
 			else
 				userData.achievements[achievementID] = GetAchievementComparisonInfo(id) and 1 or nil
@@ -226,9 +226,15 @@ local function getTalentData(classToken, inspect, activeTalentGroup)
 		specRole = talentMatches >= forceData.required and forceData.role or nil
 	end
 	
-	local first = select(3, GetTalentTabInfo(1, inspect, nil, activeTalentGroup))
-	local second = select(3, GetTalentTabInfo(2, inspect, nil, activeTalentGroup))
-	local third = select(3, GetTalentTabInfo(3, inspect, nil, activeTalentGroup))
+ --[[
+ FrameXML
+   3.3.5  local     name,              icon, pointsSpent, background, previewPointsSpent             = GetTalentTabInfo(selectedTab, TalentFrame.inspect, TalentFrame.pet, TalentFrame.talentGroup);
+   4.0.1  local id, name, description, icon, pointsSpent, background, previewPointsSpent, isUnlocked = GetTalentTabInfo(selectedTab, TalentFrame.inspect, TalentFrame.pet, TalentFrame.talentGroup);
+ --]]
+	
+	local first = select(5, GetTalentTabInfo(1, inspect, nil, activeTalentGroup))
+	local second = select(5, GetTalentTabInfo(2, inspect, nil, activeTalentGroup))
+	local third = select(5, GetTalentTabInfo(3, inspect, nil, activeTalentGroup))
 	local unspentPoints = GetUnspentTalentPoints(inspect, nil, activeTalentGroup)
 	unspentPoints = unspentPoints > 0 and unspentPoints or nil
 	
@@ -361,7 +367,7 @@ function Scan:UpdatePlayerData()
 	table.wipe(userData.achievements)
 	for achievementID in pairs(ElitistGroup.Dungeons.achievements) do
 		local id, _, _, completed, _, _, _, _, flags = GetAchievementInfo(achievementID)
-		if( bit.band(flags, ACHIEVEMENT_FLAGS_STATISTIC) > 0 ) then
+		if( flags > 0 ) then
 			userData.achievements[id] = tonumber(GetStatistic(id)) or nil
 		else
 			userData.achievements[id] = completed and 1 or nil

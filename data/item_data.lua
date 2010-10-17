@@ -135,19 +135,16 @@ local function loadData()
 
 	local function getSpell(id)
 		local name = GetSpellInfo(id)
-		--[===[@debug@
 		if( not name ) then
-			print(string.format("Failed to find spell id #%d in Sexy Group.", id or 0))
+			print(string.format("Failed to find spell id #%d.", id or 0))
 			return "<error>"
 		end
-		--@end-debug@]===]
 		
 		return string.lower(name)
 	end
 
 	-- Hybrid relics should be listed in Items.itemOverrides
 	Items.relicSpells = {
-		[getSpell(24974)] = "caster-dps", -- Insect Swarm
 		[getSpell(8921)] = "caster-dps", -- Moonfire
 		[getSpell(2912)] = "caster-dps", -- Starfire
 		[getSpell(5176)] = "caster-dps", -- Wrath
@@ -165,13 +162,11 @@ local function loadData()
 		
 		[getSpell(635)] = "healer", -- Holy Light
 		[getSpell(19750)] = "healer", -- Flash of Light
-		[getSpell(20929)] = "healer", -- Holy Shock
 		[getSpell(35395)] = "melee-dps", -- Crusader Strike
 		[getSpell(53385)] = "melee-dps", -- Divine Storm
 		[getSpell(53600)] = "tank", -- Shield of Righteousness
 		[getSpell(53595)] = "tank", -- Hammer of the Rightousness
 		[getSpell(31801)] = "tank", -- Seal of Vengeance
-		[getSpell(53736)] = "tank", -- Seal of Corruption
 		[getSpell(20925)] = "tank", -- Holy Shield
 		[getSpell(26573)] = "tank/dps", -- Consecration
 		
@@ -189,13 +184,10 @@ local function loadData()
 			
 		[getSpell(56815)] = "tank", -- Rune Strike
 		[getSpell(45902)] = "melee-dps", -- Blood Strike
-		[getSpell(55258)] = "melee-dps", -- Heart Strike
 		[getSpell(45477)] = "melee-dps", -- Icy Touch
 		[getSpell(45462)] = "melee-dps", -- Plague Strike
 		[getSpell(66198)] = "melee-dps", -- Obliterate
 		[getSpell(49998)] = "melee-dps", -- Death Strike
-		[getSpell(49892)] = "melee-dps", -- Death Coil
-		[getSpell(55265)] = "melee-dps", -- Scourge Strike
 		
 	}
 
@@ -305,8 +297,8 @@ local function loadData()
 		[47477] = "caster-dps", -- Reign of the Dead (Heroic)
 		[50658] = "caster", -- Amulet of the Silent Eulogy
 		[48032] = "caster", -- Lightbane Focus
-		[50668] = "spirit/cloak", -- Greatcloak of the Turned Champion (Heroic)
 		[50014] = "spirit/cloak", -- Greatcloak of the Turned Champion
+		[50668] = "spirit/cloak", -- Greatcloak of the Turned Champion (Heroic)
 		[50179] = "tank", -- Last Word
 		[25897] = "never", -- Bracing Earthsiege Diamond
 		[41389] = "never", -- Beaming Earthsiege Diamond
@@ -317,8 +309,8 @@ local function loadData()
 		[40707] = "tank", -- Libram of Obstruction
 		[32368] = "tank", -- Tome of the Lightbringer
 		[47661] = "tank/dps", -- Libram of Valiance
-		[50366] = "healer", -- Althor's Abacus (Heroic)
 		[50359] = "healer", -- Althor's Abacus
+		[50366] = "healer", -- Althor's Abacus (Heroic)
 		[44255] = "caster", -- Darkmoon Card: Greatness (+90 INT)
 		[44254] = "caster-spirit", -- Darkmoon Card: Greatness (+90 SPI)
 		[44253] = "tank/dps", -- Darkmoon Card: Greantess (+90 AGI)

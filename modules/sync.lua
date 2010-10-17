@@ -391,7 +391,7 @@ local function parseGear(senderName, playerID, playerName, playerServer, data, i
 			sentData.achievements[key] = nil
 		else
 			local flags = select(9, GetAchievementInfo(key))
-			if( bit.band(flags, ACHIEVEMENT_FLAGS_STATISTIC) == 0 ) then
+			if( flags == 0 ) then
 				sentData.achievements[key] = value >= 1 and 1 or nil
 			else
 				sentData.achievements[key] = math.max(sentData.achievements[key], 0)
@@ -595,7 +595,7 @@ function Sync:ParseMainExperience(sender, ...)
 
 		if( achievementID and earned and ElitistGroup.Dungeons.achievements[achievementID] ) then
 			local flags = select(9, GetAchievementInfo(achievementID))
-			if( bit.band(flags, ACHIEVEMENT_FLAGS_STATISTIC) == 0 ) then
+			if( flags == 0 ) then
 				earned = earned >= 1 and 1 or nil
 			elseif( earned <= 0 ) then
 				earned = nil

@@ -959,7 +959,7 @@ function ElitistGroup:OnDatabaseShutdown()
 		
 		for achievementID in pairs(self.Dungeons.achievements) do
 			local id, _, _, completed, _, _, _, _, flags = GetAchievementInfo(achievementID)
-			if( bit.band(flags, ACHIEVEMENT_FLAGS_STATISTIC) > 0 ) then
+			if( flags > 0 ) then
 				local statistic = tonumber(GetStatistic(id))
 				if( statistic ) then
 					data = data .. "@" .. id .. "@" .. statistic
