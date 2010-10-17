@@ -1,0 +1,51 @@
+## Interface: 30300
+## Title: Elitist Group
+## Notes: Provides quick access to information on your group and their equipment, enchant and gem choices.
+## Author: Shadowed
+## OptionalDeps: Ace3
+## SavedVariables: ElitistGroupDB
+## X-Curse-Packaged-Version: v1.7.7-1-ge9aa6fe
+## X-Curse-Project-Name: Elitist Group
+## X-Curse-Project-ID: elitistgroup
+## X-Curse-Repository-ID: wow/elitistgroup/mainline
+
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceAddon-3.0\AceAddon-3.0.xml
+libs\AceEvent-3.0\AceEvent-3.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\AceGUI-3.0\AceGUI-3.0.xml
+libs\AceConfig-3.0\AceConfig-3.0.xml
+libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+libs\AceComm-3.0\AceComm-3.0.xml
+libs\libdatabroker-1-1\LibDataBroker-1.1.lua
+#@end-no-lib-strip@
+
+localization\enUS.lua
+localization\deDE.lua
+localization\esES.lua
+localization\esMX.lua
+localization\frFR.lua
+localization\koKR.lua
+localization\ruRU.lua
+localization\zhCN.lua
+localization\zhTW.lua
+
+ElitistGroup.lua
+data\talent_data.lua
+data\dungeon_data.lua
+data\item_data.lua
+
+modules\widgets.lua
+modules\cache.lua
+modules\users.lua
+modules\party_summary.lua
+modules\raid_summary.lua
+modules\scan.lua
+modules\group_notes.lua
+modules\inspect.lua
+modules\sync.lua
+## modules\mouseover.lua
+modules\config.lua
+modules\report.lua
