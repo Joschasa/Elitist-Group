@@ -97,7 +97,7 @@ hooksecurefunc("NotifyInspect", function(unit)
 		pending.guid = UnitGUID(unit)
 		
 		Scan:UpdateUnitData(unit)
-		Scan:RegisterEvent("INSPECT_TALENT_READY")
+		Scan:RegisterEvent("INSPECT_READY")
 		Scan:RegisterEvent("INSPECT_ACHIEVEMENT_READY")
 		
 		if( AchievementFrameComparison ) then
@@ -192,9 +192,9 @@ function Scan:INSPECT_ACHIEVEMENT_READY()
 	end
 end
 
--- Inspection seems to block until INSPECT_TALENT_READY is fired, then it unblocks
-function Scan:INSPECT_TALENT_READY()
-	self:UnregisterEvent("INSPECT_TALENT_READY")
+-- Inspection seems to block until INSPECT_READY is fired, then it unblocks
+function Scan:INSPECT_READY()
+	self:UnregisterEvent("INSPECT_READY")
 	
 	if( pending.playerID and pending.talents and ElitistGroup.userData[pending.playerID] ) then
 		pending.talents = nil
