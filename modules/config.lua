@@ -538,6 +538,9 @@ SlashCmdList["ELITISTGROUP"] = function(msg)
 				elseif( not ElitistGroup.userData[playerID] ) then
 					ElitistGroup:Print(string.format(L["No data found for %s, and an inspection is pending. You'll have to wait a second and try again."], UnitName("target")))
 				end
+			else
+				-- FIXME: Proper language and localization?
+				ElitistGroup:Print("Cannot inspect your target. API told me so...")
 			end
 		else
 			ElitistGroup.modules.Scan:InspectUnit("player")
