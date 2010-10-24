@@ -163,56 +163,7 @@ function ElitistGroup:OnInitialize()
 	end
 
 	self.modules.Sync:Setup()
-	self:ShowInfoPanel()
 end
-
-function ElitistGroup:ShowInfoPanel()
-	-- We don't need to show this after the next TOC update, it should be known by then
-	if( ElitistGroupDB.throttleAnnounced or select(4, GetBuildInfo()) > 30300 ) then return end
-	ElitistGroupDB.throttleAnnounced = true
-	
-	local frame = CreateFrame("Frame", nil, UIParent)
-	frame:SetClampedToScreen(true)
-	frame:SetFrameStrata("HIGH")
-	frame:SetToplevel(true)
-	frame:SetWidth(400)
-	frame:SetHeight(285)
-	frame:SetBackdrop({
-		  bgFile = "Interface\\ChatFrame\\ChatFrameBackground",
-		  edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
-		  edgeSize = 26,
-		  insets = {left = 9, right = 9, top = 9, bottom = 9},
-	})
-	frame:SetBackdropColor(0, 0, 0, 0.85)
-	frame:SetPoint("CENTER", UIParent, "CENTER", 0, 100)
-
-	frame.titleBar = frame:CreateTexture(nil, "ARTWORK")
-	frame.titleBar:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Header")
-	frame.titleBar:SetPoint("TOP", 0, 8)
-	frame.titleBar:SetWidth(225)
-	frame.titleBar:SetHeight(45)
-
-	frame.title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-	frame.title:SetPoint("TOP", 0, 0)
-	frame.title:SetText("Elitist Group")
-
-	frame.text = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	frame.text:SetText(L["As of 3.3.5, Blizzard has started to throttle inspections to 6 inspections every ~10 seconds.|n|nElitist Group has been updated to account for this, but you may see throttle messages when using /eg, group scans will also be slower. A new option has been added in /eg config to save X amount of inspections when scanning.|n|nYou can still use Elitist Armory to check groups without the throttle limit.|n|n|cffff2020Warning!|r|nGearscore has a habit of sending a higher than normal amount of inspect requests, disabling it is recommended.|nTipTop and other tooltip addons that show talents will also contribute to the limit.|n|nYou will only see this message once."])
-	frame.text:SetPoint("TOPLEFT", 12, -22)
-	frame.text:SetWidth(frame:GetWidth() - 20)
-	frame.text:SetJustifyH("LEFT")
-	frame:SetHeight(frame.text:GetHeight() + 70)
-
-	frame.hide = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-	frame.hide:SetText(L["Ok"])
-	frame.hide:SetHeight(20)
-	frame.hide:SetWidth(100)
-	frame.hide:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 6, 8)
-	frame.hide:SetScript("OnClick", function(self)
-		self:GetParent():Hide()
-	end)
-end
-
 
 function ElitistGroup:ShowURLPopup(url, long)
 	StaticPopupDialogs["ELITISTGROUP_URL"] = StaticPopupDialogs["ELITISTGROUP_URL"] or {
