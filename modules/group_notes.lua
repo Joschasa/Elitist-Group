@@ -64,7 +64,21 @@ local function addUnit(unit)
 		return
 	end
 	
-	local isTank, isHealer, isDamage = UnitGroupRolesAssigned(unit)
+	local role = UnitGroupRolesAssigned(unit) -- String - TANK, HEALER, DAMAGER, NONE 
+	local isTank, isHealer, isDamage = false, false, false
+	if( role ) then
+		if( role == "TANK" ) then
+			isTank = true
+		else if( role == "HEALER" ) then
+			isHealer = true
+		else if( role == "DAMAGER" ) then
+			isDamage = true
+		else
+			role = UNKNOWN
+		end
+	else
+		role = UNKNOWN
+	end
 
 	playerNames[guid] = playerID
 	playerLevels[playerID] = UnitLevel(unit)

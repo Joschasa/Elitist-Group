@@ -100,7 +100,21 @@ function Summary:UpdateSingle(row)
 	local name, server = UnitName(row.unitID)
 	server = server and server ~= "" and server or GetRealmName()
 
-	local role = UnitGroupRolesAssigned(row.unitID) or UNKNOWN
+	local role = UnitGroupRolesAssigned(unit) -- String - TANK, HEALER, DAMAGER, NONE 
+	local isTank, isHealer, isDamage = false, false, false
+	if( role ) then
+		if( role == "TANK" ) then
+			isTank = true
+		else if( role == "HEALER" ) then
+			isHealer = true
+		else if( role == "DAMAGER" ) then
+			isDamage = true
+		else
+			role = UNKNOWN
+		end
+	else
+		role = UNKNOWN
+	end
 
 	-- Build the players info
 	local coords = CLASS_BUTTONS[classToken]
