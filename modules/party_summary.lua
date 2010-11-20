@@ -105,9 +105,9 @@ function Summary:UpdateSingle(row)
 	if( role ) then
 		if( role == "TANK" ) then
 			isTank = true
-		else if( role == "HEALER" ) then
+		elseif( role == "HEALER" ) then
 			isHealer = true
-		else if( role == "DAMAGER" ) then
+		elseif( role == "DAMAGER" ) then
 			isDamage = true
 		else
 			role = UNKNOWN
