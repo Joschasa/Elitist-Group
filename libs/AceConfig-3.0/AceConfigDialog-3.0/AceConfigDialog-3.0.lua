@@ -1,10 +1,10 @@
 --- AceConfigDialog-3.0 generates AceGUI-3.0 based windows based on option tables.
 -- @class file
 -- @name AceConfigDialog-3.0
--- @release $Id: AceConfigDialog-3.0.lua 967 2010-09-25 08:20:55Z nevcairiel $
+-- @release $Id: AceConfigDialog-3.0.lua 993 2010-11-18 18:49:17Z nevcairiel $
 
 local LibStub = LibStub
-local MAJOR, MINOR = "AceConfigDialog-3.0", 50
+local MAJOR, MINOR = "AceConfigDialog-3.0", 52
 local AceConfigDialog, oldminor = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not AceConfigDialog then return end
@@ -125,9 +125,7 @@ do
 	end
 	function del(t)
 		--delcount = delcount + 1
-		for k in pairs(t) do
-			t[k] = nil
-		end
+		wipe(t)
 		pool[t] = true
 	end
 --	function cached()
@@ -423,6 +421,9 @@ local function CleanUserData(widget, event)
 		widget:SetGroupList(nil)
 		if user.grouplist then
 			del(user.grouplist)
+		end
+		if user.orderlist then
+			del(user.orderlist)
 		end
 	end
 end
@@ -933,6 +934,7 @@ end
 ]]
 local function BuildSelect(group, options, path, appName)
 	local groups = new()
+	local order = new()
 	local keySort = new()
 	local opts = new()
 
@@ -947,15 +949,16 @@ local function BuildSelect(group, options, path, appName)
 			local hidden = CheckOptionHidden(v, options, path, appName)
 			if not inline and not hidden then
 				groups[k] = GetOptionsMemberValue("name", v, options, path, appName)
+				tinsert(order, k)
 			end
 			path[#path] = nil
 		end
 	end
 
-	del(keySort)
 	del(opts)
+	del(keySort)
 
-	return groups
+	return groups, order
 end
 
 local function BuildSubGroups(group, tree, options, path, appName)
@@ -1589,16 +1592,12 @@ function AceConfigDialog:FeedGroup(appName,options,container,rootframe,path, isR
 				status.groups = {}
 			end
 			select:SetStatusTable(status.groups)
-			local grouplist = BuildSelect(group, options, path, appName)
-			select:SetGroupList(grouplist)
+			local grouplist, orderlist = BuildSelect(group, options, path, appName)
+			select:SetGroupList(grouplist, orderlist)
 			select:SetUserData("grouplist", grouplist)
-			local firstgroup
-			for k, v in pairs(grouplist) do
-				if not firstgroup or k < firstgroup then
-					firstgroup = k
-				end
-			end
-			
+			select:SetUserData("orderlist", orderlist)
+
+			local firstgroup = orderlist[1]
 			if firstgroup then
 				select:SetGroup((GroupExists(appName, options, path,status.groups.selected) and status.groups.selected) or firstgroup)
 			end

@@ -1,9 +1,9 @@
---[[ $Id: AceGUIWidget-DropDown.lua 916 2010-03-15 12:24:36Z nevcairiel $ ]]--
+--[[ $Id: AceGUIWidget-DropDown.lua 991 2010-11-12 16:51:38Z nevcairiel $ ]]--
 local AceGUI = LibStub("AceGUI-3.0")
 
 -- Lua APIs
 local min, max, floor = math.min, math.max, math.floor
-local select, pairs, ipairs = select, pairs, ipairs
+local select, pairs, ipairs, type = select, pairs, ipairs, type
 local tsort = table.sort
 
 -- WoW APIs
@@ -356,7 +356,7 @@ end
 
 do
 	local widgetType = "Dropdown"
-	local widgetVersion = 22
+	local widgetVersion = 23
 	
 	--[[ Static data ]]--
 	
@@ -580,20 +580,26 @@ do
 	
 	-- exported
 	local sortlist = {}
-	local function SetList(self, list)
+	local function SetList(self, list,order)
 		self.list = list
 		self.pullout:Clear()
 		self.hasClose = nil
 		if not list then return end
 		
-		for v in pairs(list) do
-			sortlist[#sortlist + 1] = v
-		end
-		tsort(sortlist)
-		
-		for i, value in pairs(sortlist) do
-			AddListItem(self, value, list[value])
-			sortlist[i] = nil
+		if type(order) ~= "table" then
+			for v in pairs(list) do
+				sortlist[#sortlist + 1] = v
+			end
+			tsort(sortlist)
+			
+			for i, key in ipairs(sortlist) do
+				AddListItem(self, key, list[key])
+				sortlist[i] = nil
+			end
+		else
+			for i, key in ipairs(order) do
+				AddListItem(self, key, list[key])
+			end
 		end
 		if self.multiselect then
 			ShowMultiText(self)
