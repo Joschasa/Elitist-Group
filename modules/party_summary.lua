@@ -100,7 +100,7 @@ function Summary:UpdateSingle(row)
 	local name, server = UnitName(row.unitID)
 	server = server and server ~= "" and server or GetRealmName()
 
-	local role = UnitGroupRolesAssigned(unit) -- String - TANK, HEALER, DAMAGER, NONE 
+	local role = UnitGroupRolesAssigned(row.unitID) -- String - TANK, HEALER, DAMAGER, NONE 
 	local isTank, isHealer, isDamage = false, false, false
 	if( role ) then
 		if( role == "TANK" ) then
