@@ -192,9 +192,10 @@ function Scan:INSPECT_ACHIEVEMENT_READY()
 	end
 end
 
--- Inspection seems to block until INSPECT_READY is fired, then it unblocks
+-- INSPECT_READY is fired, when the data is complete and can be retrieved
 function Scan:INSPECT_READY()
 	self:UnregisterEvent("INSPECT_READY")
+	Scan:UpdateUnitData(pending.unit) -- data complete, refresh it
 	
 	if( pending.playerID and pending.talents and ElitistGroup.userData[pending.playerID] ) then
 		pending.talents = nil
