@@ -105,7 +105,8 @@ gemMetaTable = {
 		tooltip:SetOwner(UIParent, "ANCHOR_NONE")
 		tooltip:SetHyperlink(link)
 
-		for i=1, tooltip:NumLines() do
+		-- Skip first Line (Itemname), since "Shadowspirit" contains "Spirit" and will be flagged as heal every time
+		for i=2, tooltip:NumLines() do
 			local text = string.lower(_G["ElitistGroupScanTooltipTextLeft" .. i]:GetText())
 			for i=1, #(ItemData.orderedStatMap) do
 				local key = ItemData.orderedStatMap[i]

@@ -227,12 +227,6 @@ local function getTalentData(classToken, inspect, activeTalentGroup)
 		specRole = talentMatches >= forceData.required and forceData.role or nil
 	end
 	
- --[[
- FrameXML
-   3.3.5  local     name,              icon, pointsSpent, background, previewPointsSpent             = GetTalentTabInfo(selectedTab, TalentFrame.inspect, TalentFrame.pet, TalentFrame.talentGroup);
-   4.0.1  local id, name, description, icon, pointsSpent, background, previewPointsSpent, isUnlocked = GetTalentTabInfo(selectedTab, TalentFrame.inspect, TalentFrame.pet, TalentFrame.talentGroup);
- --]]
-	
 	local first = select(5, GetTalentTabInfo(1, inspect, nil, activeTalentGroup))
 	local second = select(5, GetTalentTabInfo(2, inspect, nil, activeTalentGroup))
 	local third = select(5, GetTalentTabInfo(3, inspect, nil, activeTalentGroup))
