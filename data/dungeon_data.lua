@@ -79,8 +79,8 @@ local function loadData()
 			[5066] = 5, -- Lost City of the Tol'vir
 			[5083] = 5, -- Deadmines
 			[5093] = 5, -- Shadowfang Keep
-			[4844] = 50, -- Cataclysm Dungeon Hero (every Heroic cleared)
-			[4845] = 100, -- Glory of the Cataclysm Hero (all the achievements ;) )
+			-- [4844] = 50, -- Cataclysm Dungeon Hero (every Heroic cleared)
+			-- [4845] = 100, -- Glory of the Cataclysm Hero (all the achievements ;) )
 		},
 		
 		-- raids
