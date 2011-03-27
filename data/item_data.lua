@@ -57,7 +57,7 @@ local function loadData()
 		["WARRIOR"] = L["Plate"],
 		["ROGUE"] = L["Leather"],
 		["PALADIN"] = L["Plate"],
-		["HUNTER"] = L["Leather"],
+		["HUNTER"] = L["Mail"],
 		["PRIEST"] = L["Cloth"],
 		["DEATHKNIGHT"] = L["Plate"],
 	}
