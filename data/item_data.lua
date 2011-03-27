@@ -37,6 +37,30 @@ local function loadData()
 	for slotType in pairs(Items.inventoryToID) do
 		Items.validInventorySlots[GetInventorySlotInfo(slotType)] = slotType
 	end
+	
+	Items.SubTypeSlots = {
+		["HeadSlot"] = "head", ["ShoulderSlot"] = "shoulders", ["ChestSlot"] = "chest",
+		["WristSlot"] = "wrists", ["HandsSlot"] = "hands", ["WaistSlot"] = "waist",		
+		["LegsSlot"] = "legs", ["FeetSlot"] = "boots",
+	}
+	
+	Items.validSubTypeSlots = {}
+	for slotType in pairs(Items.SubTypeSlots) do
+		Items.validSubTypeSlots[GetInventorySlotInfo(slotType)] = slotType
+	end
+
+	Items.classToValidSubType = {
+		["SHAMAN"] = L["Mail"],
+		["MAGE"] = L["Cloth"],
+		["WARLOCK"] = L["Cloth"],
+		["DRUID"] = L["Leather"],
+		["WARRIOR"] = L["Plate"],
+		["ROGUE"] = L["Leather"],
+		["PALADIN"] = L["Plate"],
+		["HUNTER"] = L["Leather"],
+		["PRIEST"] = L["Cloth"],
+		["DEATHKNIGHT"] = L["Plate"],
+	}
 
 	-- Yes, technically you can enchant rings. But we can't accurately figure out if the person is an enchanter
 	-- while we will rate the enchant if one is present, it won't be flagged as they don't have it enchanted

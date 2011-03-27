@@ -461,6 +461,12 @@ L[ [=[You wrote %s ago:
 |cffffffff%s|r]=]
 
 
+L["Cloth"] = "Cloth"
+L["Leather"] = "Leather"
+L["Mail"] = "Mail"
+L["Plate"] = "Plate"
+
+
 ElitistGroup.L = L
 --[===[@debug@
 ElitistGroup.L = setmetatable(ElitistGroup.L, {

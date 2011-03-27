@@ -481,6 +481,8 @@ local MAINHAND_SLOT, OFFHAND_SLOT, WAIST_SLOT = GetInventorySlotInfo("MainHandSl
 function ElitistGroup:GetGearSummary(userData)
 	local spec = self:GetPlayerSpec(userData.classToken, userData)
 	local validSpecTypes = self.Items.talentToRole[spec]
+	local validSubTypeSlots = self.Items.validSubTypeSlots
+	local validSubType = self.Items.classToValidSubType[userData.classToken]
 	local equipment, gems, enchants = self:GetTable(), self:GetTable(), self:GetTable()
 	
 	equipment.totalScore = 0
@@ -499,7 +501,7 @@ function ElitistGroup:GetGearSummary(userData)
 	gems.pass = true
 	
 	for inventoryID, itemLink in pairs(userData.equipment) do
-		local fullItemLink, itemQuality, itemLevel, _, _, _, _, itemEquipType, itemIcon = select(2, GetItemInfo(itemLink))
+		local fullItemLink, itemQuality, itemLevel, _, itemType, itemSubType, _, itemEquipType, itemIcon = select(2, GetItemInfo(itemLink))
 		if( fullItemLink and itemQuality ) then
 			local baseItemLink, enchantItemLink = string.match(itemLink, "item:%d+"), string.match(itemLink, "item:%d+:(%d+)")
 						
@@ -526,6 +528,16 @@ function ElitistGroup:GetGearSummary(userData)
 
 			-- Now check item
 			if( itemTalent ~= "unknown" and validSpecTypes and not validSpecTypes[itemTalent] and ( not roleOverride or not roleOverride[itemTalent] ) ) then
+				equipment.pass = nil
+				equipment[itemLink] = itemTalent
+				equipment.totalBad = equipment.totalBad + 1
+				
+				table.insert(equipment, itemLink)
+				table.insert(equipment, suitMessage)
+			end
+			
+			-- Check itemSubType for class-specific specialization
+			if( validSubTypeSlots and validSubTypeSlots[inventoryID] and itemSubType and itemSubType ~= validSubType ) then
 				equipment.pass = nil
 				equipment[itemLink] = itemTalent
 				equipment.totalBad = equipment.totalBad + 1
