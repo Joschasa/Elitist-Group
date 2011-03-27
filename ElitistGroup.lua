@@ -515,10 +515,8 @@ function ElitistGroup:GetGearSummary(userData)
 			-- Figure out the items slot name if necessary
 			if( ElitistGroup.db.profile.general.showSlotName ) then
 				local equipSlot = self.Items.validInventorySlots[inventoryID]
-				if( equipSlot == "RangedSlot" and ( userData.classToken == "DRUID" or userData.classToken == "PALADIN" or userData.classToken == "SHAMAN") ) then
-					equipSlot = "RelicSlot"
 				-- Use the unique keys which show Ring #/Trinket #
-				elseif( equipID == "rings" or equipID == "trinkets" ) then
+				if( equipID == "rings" or equipID == "trinkets" ) then
 					equipSlot = equipSlot .. "_UNIQUE"
 				end
 				
