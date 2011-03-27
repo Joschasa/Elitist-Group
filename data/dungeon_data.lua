@@ -12,7 +12,14 @@ local function loadData()
 		
 	Dungeons.suggested = {
 		-- thinking about removing this feature...we'll see...
-		-- L["T7 Dungeons"],					200, 5,		"heroic",
+		L["T11 Dungeons"],					346,  5, "heroic",
+		L["Baradin Hold"],					359, 10, "normal",
+		L["Bastion of Twilight"],			359, 10, "normal",
+		L["Blackwing Descent"],				359, 10, "normal",
+		L["Throne of the Four Winds"],		359, 10, "normal",
+		L["Bastion of Twilight"],			372, 10, "heroic",
+		L["Blackwing Descent"],				372, 10, "heroic",
+		L["Throne of the Four Winds"],		372, 10, "heroic",
 	}
 	
 	-- Remove any dungeons that aren't in the game yet
@@ -38,10 +45,10 @@ local function loadData()
 		
 		-- 10/25 mans get a slight modifier compared to 5 mans, hard/heroic mdoes are also given a slight bump
 		if( players >= 10 ) then
-			modifier = modifier + 0.01
+			modifier = modifier + 0.03
 			
 			if( type == "heroic" or type == "hard" ) then
-				modifier = modifier + 0.01
+				modifier = modifier + 0.03
 			end
 		end
 		
@@ -108,7 +115,7 @@ local function loadData()
 			
 		-- heroic/hard mode raids
 		{name = L["Raids"], parent = true, id = "10-man-hard", players = 10, heroic = true},
-		{name = L["Bastion of Twilight"], childOf = "10-man-hard", id = "bot-10m-h", cascade = "bot-10m", players = 10,
+		{name = L["Bastion of Twilight"], childOf = "10-man-hard", id = "bot-10m-h", cascade = "bot-10m", heroic = true, players = 10,
 			experienced = 50, -- 2 + Cho'Gall or Sinestra
 			[5118] = 10, -- Halfus
 			[5117] = 10, -- Valiona & Theralion
@@ -117,7 +124,7 @@ local function loadData()
 			[5121] = 50, -- Sinestra
 			[5313] = 50, -- Sinestra first attempt without any raid member died
 		},
-		{name = L["Blackwing Descent"], childOf = "10-man-hard", id = "blackdesc-10m-h", cascade = "blackdesc-10m", players = 10,
+		{name = L["Blackwing Descent"], childOf = "10-man-hard", id = "blackdesc-10m-h", cascade = "blackdesc-10m", heroic = true, players = 10,
 			experienced = 40, -- 4 Bosses or Nefarian
 			[5094] = 10, -- Magmaw
 			[5107] = 10, -- Omnotron Defense System
@@ -126,7 +133,7 @@ local function loadData()
 			[5109] = 10, -- Atramedes
 			[5116] = 40, -- Nefarian
 		},
-		{name = L["Throne of the Four Winds"], childOf = "10-man-hard", id = "totfw-10m-h", cascade = "totfw-10m", players = 10,
+		{name = L["Throne of the Four Winds"], childOf = "10-man-hard", id = "totfw-10m-h", cascade = "totfw-10m", heroic = true, players = 10,
 			experienced = 30, -- One time cleared
 			[5122] = 10, -- Conclave of Wind
 			[5123] = 20, -- Al'Akir
