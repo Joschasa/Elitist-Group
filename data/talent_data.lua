@@ -63,14 +63,6 @@ local function loadData()
 	-- This isn't really perfect, if a Druid tries to hybrid it up then it's hard for us to figure out what spec they are
 	-- a good idea might be to force set their role based on the assignment they chose when possible, and use this as a fallback
 	Talents.specOverride = {
-		--[[ ["DEATHKNIGHT"] = {
-			["required"] = 3,
-			["role"] = "tank-dk",
-			
-			[GetSpellInfo(16271)] = 5, -- Anticipation
-			[GetSpellInfo(49042)] = 5, -- Toughness
-			[GetSpellInfo(55225)] = 5, -- Blade Barrier
-		}, ]]---
 		["DRUID"] = {
 			["required"] = 3,
 			["role"] = "bear-druid",

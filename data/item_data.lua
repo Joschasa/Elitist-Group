@@ -82,7 +82,6 @@ local function loadData()
 		["manaless"] = L["Healing Priest/Druid"],
 		["tank/ranged"] = L["Tank/Ranged DPS"],
 		["elemental/pvp"] = L["PVP/Elemental Shaman"],
-		["spirit/cloak"] = L["Caster (Spirit)"],
 	}
 
 	local function mergeTable(into, ...)
@@ -112,13 +111,11 @@ local function loadData()
 	}
 	local casterDamage = {
 		["all"] = true, 
-		["caster-spirit"] = true, 
 		["caster-dps"] = true, 
 		["caster"] = true, 
 		["healer/dps"] = true, 
 		["tank/dps"] = true, 
 		["dps"] = true, 
-		["spirit/cloak"] = true,
 	}
 	local meleeDamage = {
 		["all"] = true, 
@@ -145,15 +142,16 @@ local function loadData()
 		["healer"] = true, 
 		["caster"] = true, 
 		["healer/dps"] = true,
+		["caster-spirit"] = true,
 	}
-	local spiritHealer = mergeTable({}, healer, "caster-spirit", "spirit/cloak")
+	local hybridCaster = mergeTable({}, casterDamage, "caster-spirit")
 
 	-- Now define type by spec
 	Items.talentToRole = {
 		-- Shamans
-		["elemental-shaman"] = mergeTable({}, casterDamage, "elemental/pvp", "spirit/cloak"),
+		["elemental-shaman"] = mergeTable({}, hybridCaster, "elemental/pvp"),
 		["enhance-shaman"] = meleeDamage,
-		["resto-shaman"] = healer,
+		["resto-shaman"] = healer, 
 		-- Mages
 		["arcane-mage"] = casterDamage,
 		["fire-mage"] = casterDamage,
@@ -163,10 +161,10 @@ local function loadData()
 		["demon-warlock"] = casterDamage,
 		["destro-warlock"] = casterDamage,
 		-- Druids
-		["balance-druid"] = mergeTable({}, casterDamage, "manaless"),
+		["balance-druid"] = hybridCaster,
 		["cat-druid"] = meleeDamage,
-		["bear-druid"] = mergeTable({}, meleeDamage, tank, "pvp"),
-		["resto-druid"] = mergeTable({}, spiritHealer, "manaless"),
+		["bear-druid"] = mergeTable({}, meleeDamage, tank),
+		["resto-druid"] = healer,
 		-- Warriors
 		["arms-warrior"] = meleeDamage,
 		["fury-warrior"] = meleeDamage,
@@ -184,19 +182,18 @@ local function loadData()
 		["marks-hunter"] = rangeDamage,
 		["survival-hunter"] = rangeDamage,
 		-- Priests
-		["disc-priest"] = mergeTable({}, spiritHealer, "manaless"),
-		["holy-priest"] = mergeTable({}, spiritHealer, "manaless"),
-		["shadow-priest"] = casterDamage,
+		["disc-priest"] = healer,
+		["holy-priest"] = healer,
+		["shadow-priest"] = hybridCaster,
 		-- Death Knights
-		["blood-dk"] = meleeDamage,
+		["blood-dk"] = tank,
 		["frost-dk"] = meleeDamage,
 		["unholy-dk"] = meleeDamage,
-		["tank-dk"] = tank,
 	}
 
 	-- This will likely have to be cleaned up, but for now this will allow overrides on what is allowed based on slot
 	Items.roleOverrides = {
-		["tank-dk"] = {type = "weapons", ["physical-dps"] = true, ["dps"] = true, ["melee-dps"] = true}
+		["blood-dk"] = {type = "weapons", ["physical-dps"] = true, ["dps"] = true, ["melee-dps"] = true}
 	}
 
 	local function getSpell(id)
@@ -297,6 +294,7 @@ local function loadData()
 		HASTE_SPELL_RATING = "ITEM_MOD_HASTE_SPELL_RATING_SHORT", CRIT_SPELL_RATING = "ITEM_MOD_CRIT_SPELL_RATING_SHORT", INTELLECT = "ITEM_MOD_INTELLECT_SHORT", RESISTANCE0 = "RESISTANCE0_NAME", RESISTANCE1 = "RESISTANCE1_NAME", RESISTANCE2 = "RESISTANCE2_NAME", RESISTANCE3 = "RESISTANCE3_NAME", RESISTANCE4 = "RESISTANCE4_NAME", RESISTANCE5 = "RESISTANCE5_NAME", RESISTANCE6 = "RESISTANCE6_NAME",
 		STAMINA = "ITEM_MOD_STAMINA_SHORT", RESIST = "RESIST", CRIT_RATING = "ITEM_MOD_CRIT_RATING_SHORT", MANA = "ITEM_MOD_MANA_SHORT", HIT_RATING = "ITEM_MOD_HIT_RATING_SHORT",
 		HASTE_RATING = "ITEM_MOD_HASTE_RATING_SHORT", SPELL_STATALL = "SPELL_STATALL", PARRY_RATING = "ITEM_MOD_PARRY_RATING_SHORT", HEALTH = "HEALTH", DAMAGE = "DAMAGE",
+		MASTERY_RATING = "ITEM_MOD_MASTERY_RATING_SHORT",
 		
 		HELPFUL_SPELL = L["helpful spell"], HARMFUL_SPELL = L["harmful spell"], PERIODIC_DAMAGE = L["periodic damage"], MELEE_ATTACK = L["chance on melee attack"],
 		CHANCE_MELEE_OR_RANGE = L["chance on melee or range"], CHANCE_MELEE_AND_RANGE = L["chance on melee and range"], RANGED_CRITICAL_STRIKE = L["ranged critical"],
