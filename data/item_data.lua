@@ -58,7 +58,32 @@ local function loadData()
 		["INVTYPE_ROBE"] = "chest", ["INVTYPE_CHEST"] = "chest",
 	}
 
-	Items.itemRoleText = {["pvp"] = L["PVP"], ["healer"] = L["Healer (All)"], ["caster-dps"] = L["DPS (Caster)"], ["caster"] = L["Caster (All)"], ["tank"] = L["Tank"], ["unknown"] = L["Unknown"], ["melee-dps"] = L["DPS (Melee)"], ["range-dps"] = L["DPS (Ranged)"], ["physical-dps"] = L["DPS (Physical)"], ["melee"] = L["Melee (All)"], ["never"] = L["Always bad"], ["dps"] = L["DPS (All)"], ["healer/dps"] = L["Healer/DPS"], ["tank/dps"] = L["Tank/DPS"], ["all"] = L["All"], ["physical-all"] = L["Physical (All)"], ["tank/pvp"] = L["Tank/PVP"], ["caster-spirit"] = L["Caster (Spirit)"], ["situational-caster"] = L["situational (Caster)"], ["situational-healer"] = L["situational (Healer)"], ["manaless"] = L["Healing Priest/Druid"], ["tank/ranged"] = L["Tank/Ranged DPS"], ["elemental/pvp"] = L["PVP/Elemental Shaman"], ["spirit/cloak"] = L["Caster (Spirit)"]}
+	Items.itemRoleText = {
+		["pvp"] = L["PVP"],
+		["healer"] = L["Healer (All)"],
+		["caster-dps"] = L["DPS (Caster)"],
+		["caster"] = L["Caster (All)"],
+		["tank"] = L["Tank"],
+		["unknown"] = L["Unknown"],
+		["melee-dps"] = L["DPS (Melee)"],
+		["range-dps"] = L["DPS (Ranged)"],
+		["physical-dps"] = L["DPS (Physical)"],
+		["melee"] = L["Melee (All)"],
+		["never"] = L["Always bad"],
+		["dps"] = L["DPS (All)"],
+		["healer/dps"] = L["Healer/DPS"],
+		["tank/dps"] = L["Tank/DPS"],
+		["all"] = L["All"],
+		["physical-all"] = L["Physical (All)"],
+		["tank/pvp"] = L["Tank/PVP"],
+		["caster-spirit"] = L["Caster (Spirit)"],
+		["situational-caster"] = L["situational (Caster)"],
+		["situational-healer"] = L["situational (Healer)"],
+		["manaless"] = L["Healing Priest/Druid"],
+		["tank/ranged"] = L["Tank/Ranged DPS"],
+		["elemental/pvp"] = L["PVP/Elemental Shaman"],
+		["spirit/cloak"] = L["Caster (Spirit)"],
+	}
 
 	local function mergeTable(into, ...)
 		for i=1, select("#", ...) do
@@ -76,11 +101,51 @@ local function loadData()
 	end
 	
 	-- Set the primary spec arch types
-	local tank = {["all"] = true, ["tank"] = true, ["melee"] = true, ["physical-all"] = true, ["tank/dps"] = true, ["tank/ranged"] = true, ["tank/pvp"] = true}
-	local casterDamage = {["all"] = true, ["caster-spirit"] = true, ["caster-dps"] = true, ["caster"] = true, ["healer/dps"] = true, ["tank/dps"] = true, ["dps"] = true, ["spirit/cloak"] = true}
-	local meleeDamage = {["all"] = true, ["melee"] = true, ["melee-dps"] = true, ["physical-dps"] = true, ["physical-all"] = true, ["tank/dps"] = true, ["healer/dps"] = true, ["dps"] = true}
-	local rangeDamage = {["all"] = true, ["range-dps"] = true, ["tank/ranged"] = true, ["physical-dps"] = true, ["physical-all"] = true, ["healer/dps"] = true, ["tank/dps"] = true, ["dps"] = true}
-	local healer = {["all"] = true, ["healer"] = true, ["caster"] = true, ["healer/dps"] = true}
+	local tank = {
+		["all"] = true,
+		["tank"] = true, 
+		["melee"] = true, 
+		["physical-all"] = true, 
+		["tank/dps"] = true, 
+		["tank/ranged"] = true, 
+		["tank/pvp"] = true,
+	}
+	local casterDamage = {
+		["all"] = true, 
+		["caster-spirit"] = true, 
+		["caster-dps"] = true, 
+		["caster"] = true, 
+		["healer/dps"] = true, 
+		["tank/dps"] = true, 
+		["dps"] = true, 
+		["spirit/cloak"] = true,
+	}
+	local meleeDamage = {
+		["all"] = true, 
+		["melee"] = true, 
+		["melee-dps"] = true, 
+		["physical-dps"] = true, 
+		["physical-all"] = true, 
+		["tank/dps"] = true, 
+		["healer/dps"] = true, 
+		["dps"] = true
+	}
+	local rangeDamage = {
+		["all"] = true, 
+		["range-dps"] = true, 
+		["tank/ranged"] = true, 
+		["physical-dps"] = true, 
+		["physical-all"] = true, 
+		["healer/dps"] = true, 
+		["tank/dps"] = true, 
+		["dps"] = true,
+	}
+	local healer = {
+		["all"] = true, 
+		["healer"] = true, 
+		["caster"] = true, 
+		["healer/dps"] = true,
+	}
 	local spiritHealer = mergeTable({}, healer, "caster-spirit", "spirit/cloak")
 
 	-- Now define type by spec
