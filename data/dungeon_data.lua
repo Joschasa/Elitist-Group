@@ -36,7 +36,7 @@ local function loadData()
 	end
 	
 
-	local BASE_MOD = 0.89
+	local BASE_MOD = 0.91
 
 	Dungeons.minLevel = 1000
 	Dungeons.maxLevel = 0
@@ -44,11 +44,11 @@ local function loadData()
 		local itemLevel, raid, type = Dungeons.suggested[i + 1], Dungeons.suggested[i + 2], Dungeons.suggested[i + 3]
 		local modifier = BASE_MOD
 		
-		-- 10/25 mans get a slight modifier compared to 5 mans, hard/heroic mdoes are also given a slight bump
+		-- raids get a slight modifier compared to 5 mans, heroic modes are also given a slight bump
 		if( raid ) then
 			modifier = modifier + 0.03
 			
-			if( type == "heroic" or type == "hard" ) then
+			if( type == "heroic" ) then
 				modifier = modifier + 0.03
 			end
 		end
