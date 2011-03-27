@@ -212,51 +212,49 @@ local function loadData()
 
 	-- As with some items, some enchants have special text that doesn't tell you what they do so we need manual flagging
 	Items.enchantOverrides = {
+		-- Tailoring
+		[4115] = "caster", -- Lightweave Embroidery Rank 2 - 580 Int
+		[4116] = "healer", -- Darkglow Embroidery Rank 2 - 580 Spi
+		[4118] = "physical-all", -- Swordguard Embroidery Rank 2 - 1000 AP
 		
-		[3247] = "physical-dps", -- Scourgebane
-		[3826] = "all", -- Icewalker
-		[3253] = "tank", -- Armsman
-		[3852] = "tank/pvp", -- Greater Inscription of the Gladiator
-		[3225] = "dps", -- Executioner
-		[3870] = "tank/pvp", -- Blood Draining
-		[3869] = "tank", -- Blade Ward
-		[3232] = "all", -- Tuskarr's Vitality
-		[3296] = nil, -- Enhant Cloak - Wisdom, not sure if we want to flag this as a never. Really you should always use cloak - haste
-		[3789] = "melee-dps", -- Berserking 
-		[3790] = "dps", -- Black Magic 
-		[3247] = "never", -- Scourgebane 
-		[3251] = "never", -- Giant Slayer 
+		-- Leatherworking
+		[4127] = "tank", -- Charscale Leg Armor
+		
+		-- Old Enchants
+		[1896] = "never", -- Lifestealing
+		[1900] = "never", -- Crusader
+		[2613] = "never", -- Enchant Gloves - Threat 
+		[2621] = "never", -- Enchant Cloak - Subtlety 
+		[2673] = "never", -- Mongoose
+		[2674] = "never", -- Spellsurge 
+		[2675] = "never", -- Battlemaster 
+		[2939] = "never", -- Cat's Swiftness 
+		[2940] = "never", -- Boar's Speed 
+		[3225] = "never", -- Executioner
+		[3232] = "never", -- Tuskarr's Vitality
+		[3238] = "never", -- Gatherer 
 		[3239] = "never", -- Icebreaker
 		[3241] = "never", -- Lifeward
-		[3244] = "caster", -- Greater Vitality
+		[3244] = "never", -- Greater Vitality
+		[3247] = "never", -- Scourgebane 
+		[3251] = "never", -- Giant Slayer 
+		[3253] = "never", -- Armsman
+		[3731] = "pvp", -- Titanium Weapon Chain
+		[3748] = "never", -- Titanium Spike
+		[3788] = "never", -- Accuracy
+		[3789] = "never", -- Berserking 
+		[3790] = "never", -- Black Magic 
+		[3826] = "never", -- Icewalker
+		[3849] = "never", -- Titanium Plating
+		[3852] = "never", -- Greater Inscription of the Gladiator
+		[3869] = "never", -- Blade Ward
+		[3870] = "never", -- Blood Draining
+		[803] = "never", -- Fiery Weapon
 		[846] = "never", -- Angler 
-		[3238] = "never", -- Gatherer 
-		[2940] = "all", -- Boar's Speed 
-		[2939] = "physical-dps", -- Cat's Swiftness 
-		[2675] = "never", -- Battlemaster 
-		[2674] = "never", -- Spellsurge 
 		[910] = "pvp", -- Enchant Cloak - Stealth
-		[2621] = "never", -- Enchant Cloak - Subtlety 
-		[2613] = "never", -- Enchant Gloves - Threat 
-		[1900] = "melee-dps", -- Crusader
-		[1896] = "never", -- Lifestealing
 		[930] = "never", -- Riding Skill
-		[803] = "melee-dps", -- Fiery Weapon
-		[3731] = "tank/pvp", -- Titanium Weapon Chain
-		[3788] = "tank/ranged", -- Accuracy
-		[3728] = "caster", -- Darkglow Embroidery
-		[3730] = "physical-dps", -- Swordguard Embroidery
-		[3722] = "caster", -- Lightweave Embroidery
-		[3748] = "tank", -- Titanium Spike
-		[3849] = "tank", -- Titanium Plating
-		[2673] = "tank/dps", -- Mongoose
-		[3606] = "all", -- Nitro Boosts
-		[3860] = "tank", -- Reticulated Armor Webbing
-		[3859] = "caster", -- Springy Arachnoweave
-		[3878] = "tank", -- Mind Amplification Dish, it is higher STA than the other one, going for the safe flagging for now. Perhaps flag as never?
-		[3603] = "tank/dps", -- Hand-Mounted Pyro Rocket
-		[3604] = "healer/dps", -- Hyperspeed Accelerators
-		[3605] = "physical-all", -- Flexweave Underlay
+
+		-- Runeforging
 		[3883] = "tank", -- Rune of the Nerubian Carapace
 		[3847] = "tank", -- Rune of the Stoneskin Gargoyle
 		[3368] = "melee-dps", -- Rune of the Fallen Crusader
@@ -279,10 +277,14 @@ local function loadData()
 	-- Certain items can't be classified with normal stat scans, you can specify a specific type using this
 	Items.itemOverrides = {
 		-- Trinkets + Items
-		[47316] = "caster-dps", -- Reign of the Dead (Caster Trinket)
-		[50658] = "caster", -- Amulet of the Silent Eulogy (Caster Neck)
+		[59354] = "healer", -- Jar of Ancient Remedys
+		[65029] = "healer", -- Jar of Ancient Remedys (heroic)
+		[59500] = "healer", -- Fall of Mortality
+		[65124] = "healer", -- Fall of Mortality (heroic)
+		[64645] = "healer", -- Tyrande's Favorite Doll
+		[58184] = "healer", -- Core of Ripeness
 		-- Gems
-		[41382] = "never", -- Trenchant Earthsiege Diamond
+		-- [41382] = "never", -- Trenchant Earthsiege Diamond
 	}
 
 	-- Map for checking stats on gems and enchants
