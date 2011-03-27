@@ -260,7 +260,8 @@ L[ [=[Match all item level, gear, enchant and gem filters to report.
 If unchecked, only have to match one.]=] ] = [=[Match all item level, gear, enchant and gem filters to report.
 
 If unchecked, only have to match one.]=]
-L["Melee (All)"] = "Melee (All)"
+L["Melee (Agi)"] = "Melee (Agi)"
+L["Melee (Str)"] = "Melee (Str)"
 L["melee and ranged"] = "melee and ranged"
 L["melee or range"] = "melee or range"
 L["n%-\"(.-)\""] = "n%-\"(.-)\""

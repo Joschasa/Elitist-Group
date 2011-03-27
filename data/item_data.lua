@@ -68,7 +68,8 @@ local function loadData()
 		["melee-dps"] = L["DPS (Melee)"],
 		["range-dps"] = L["DPS (Ranged)"],
 		["physical-dps"] = L["DPS (Physical)"],
-		["melee"] = L["Melee (All)"],
+		["melee-agi"] = L["Melee (Agi)"],
+		["melee-str"] = L["Melee (Str)"],
 		["never"] = L["Always bad"],
 		["dps"] = L["DPS (All)"],
 		["healer/dps"] = L["Healer/DPS"],
@@ -136,6 +137,7 @@ local function loadData()
 		["healer/dps"] = true, 
 		["tank/dps"] = true, 
 		["dps"] = true,
+		["melee-agi"] = true,
 	}
 	local healer = {
 		["all"] = true, 
@@ -145,12 +147,14 @@ local function loadData()
 		["caster-spirit"] = true,
 	}
 	local hybridCaster = mergeTable({}, casterDamage, "caster-spirit")
+	local meleeDamageAgi = mergeTable({}, meleeDamage, "melee-agi")
+	local meleeDamageStr = mergeTable({}, meleeDamage, "melee-str")
 
 	-- Now define type by spec
 	Items.talentToRole = {
 		-- Shamans
 		["elemental-shaman"] = mergeTable({}, hybridCaster, "elemental/pvp"),
-		["enhance-shaman"] = meleeDamage,
+		["enhance-shaman"] = meleeDamageAgi,
 		["resto-shaman"] = healer, 
 		-- Mages
 		["arcane-mage"] = casterDamage,
@@ -162,33 +166,33 @@ local function loadData()
 		["destro-warlock"] = casterDamage,
 		-- Druids
 		["balance-druid"] = hybridCaster,
-		["cat-druid"] = meleeDamage,
-		["bear-druid"] = mergeTable({}, meleeDamage, tank),
+		["cat-druid"] = meleeDamageAgi,
+		["bear-druid"] = mergeTable({}, meleeDamageAgi, tank),
 		["resto-druid"] = healer,
 		-- Warriors
-		["arms-warrior"] = meleeDamage,
-		["fury-warrior"] = meleeDamage,
-		["prot-warrior"] = tank,
+		["arms-warrior"] = meleeDamageStr,
+		["fury-warrior"] = meleeDamageStr,
+		["prot-warrior"] = mergeTable({}, meleeDamageStr, tank),
 		-- Rogues
-		["assass-rogue"] = meleeDamage,
-		["combat-rogue"] = meleeDamage,
-		["subtlety-rogue"] = meleeDamage,
+		["assass-rogue"] = meleeDamageAgi,
+		["combat-rogue"] = meleeDamageAgi,
+		["subtlety-rogue"] = meleeDamageAgi,
 		-- Paladins
 		["holy-paladin"] = healer,
-		["prot-paladin"] = tank,
-		["ret-paladin"] = meleeDamage,
+		["prot-paladin"] = mergeTable({}, meleeDamageStr, tank),
+		["ret-paladin"] = meleeDamageStr,
 		-- Hunters
-		["beast-hunter"] = rangeDamage,
-		["marks-hunter"] = rangeDamage,
-		["survival-hunter"] = rangeDamage,
+		["beast-hunter"] = rangeDamageAgi,
+		["marks-hunter"] = rangeDamageAgi,
+		["survival-hunter"] = rangeDamageAgi,
 		-- Priests
 		["disc-priest"] = healer,
 		["holy-priest"] = healer,
 		["shadow-priest"] = hybridCaster,
 		-- Death Knights
-		["blood-dk"] = tank,
-		["frost-dk"] = meleeDamage,
-		["unholy-dk"] = meleeDamage,
+		["blood-dk"] = mergeTable({}, meleeDamageStr, tank),
+		["frost-dk"] = meleeDamageStr,
+		["unholy-dk"] = meleeDamageStr,
 	}
 
 	-- This will likely have to be cleaned up, but for now this will allow overrides on what is allowed based on slot
@@ -331,12 +335,13 @@ local function loadData()
 		{type = "healer",		default = "SPELL_HEALING_DONE@", trinkets = "HELPFUL_SPELL@MAGICAL_HEALS@"},
 		{type = "caster-dps",	default = "HIT_SPELL_RATING@", trinkets = "HARMFUL_SPELL@PERIODIC_DAMAGE@SPELL_DAMAGE@"},
 		{type = "caster-dps",	default = "HIT_RATING@", require = "ITEM_MOD_SPELL_POWER_SHORT", require2 = "ITEM_MOD_SPELL_DAMAGE_DONE_SHORT"},
-		{type = "physical-all",	default = "AGILITY@"},
+		{type = "melee-agi",	default = "AGILITY@"},
+		{type = "melee-str",	default = "STRENGTH@"},
 		{type = "physical-dps", default = "ARMOR_PENETRATION_RATING@", trinkets = "ATTACK@MELEE_OR_RANGE_DAMAGE@CHANCE_MELEE_OR_RANGE@MELEE_AND_RANGE@MELEE_AND_RANGE@"},
 		{type = "range-dps",	default = "RANGED_ATTACK_POWER@CRIT_RANGED_RATING@HIT_RANGED_RATING@RANGED_CRITICAL_STRIKE@"},
-		{type = "melee",		gems = "STRENGTH@", require = "ITEM_MOD_STAMINA_SHORT"},
-		{type = "caster-spirit",gems = "SPIRIT@", enchants = "SPIRIT@", trinkets = "SPIRIT@"},
-		{type = "caster-spirit",default = "SPIRIT@", require = "ITEM_MOD_SPELL_POWER_SHORT", require2 = "ITEM_MOD_SPELL_DAMAGE_DONE_SHORT"},
+		-- {type = "melee-str",	gems = "STRENGTH@", require = "ITEM_MOD_STAMINA_SHORT"},
+		-- {type = "caster-spirit",gems = "SPIRIT@", enchants = "SPIRIT@", trinkets = "SPIRIT@"},
+		{type = "caster-spirit",default = "SPIRIT@"},
 		{type = "caster",		default = "POWER_REGEN0@SPELL_DAMAGE_DONE@SPELL_POWER@MANA_REGENERATION@HASTE_SPELL_RATING@CRIT_SPELL_RATING@INTELLECT@", gems = "MANA@", enchants = "MANA@"},
 		{type = "caster",		default = "MANA@", require = "ITEM_MOD_SPELL_POWER_SHORT", require2 = "ITEM_MOD_SPELL_DAMAGE_DONE_SHORT"},
 		{type = "tank",			default = "PARRY_RATING@DODGE_RATING@DEFENSE_SKILL_RATING@BLOCK_RATING@BLOCK_VALUE@", enchants = "STAMINA@HEALTH@RESISTANCE0@", trinkets = "RESISTANCE0@STAMINA@", weapons = "RESISTANCE0@", rings = "RESISTANCE0"},
