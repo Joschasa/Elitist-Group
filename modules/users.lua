@@ -685,11 +685,10 @@ function Users:BuildAchievementPage()
 
 				local rowOffset = data.subParent and 20 or DungeonData.experienceParents[data.childOf] and 10 or data.childOf and 4 or 16
 				
-				local players = data.parent and data.players and string.format(L[" (%d-man)"], data.players) or ""
 				-- Children categories without experience requirements should be shown in the experienceText so we don't get an off looking gap
 				local heroicIcon = data.heroic and "|TInterface\\LFGFrame\\UI-LFG-ICON-HEROIC:16:13:-2:-2:32:32:0:16:0:20|t" or ""
 				if( not data.experienced ) then
-					row.nameText:SetFormattedText("%s%s%s", heroicIcon, data.name, players)
+					row.nameText:SetFormattedText("%s%s", heroicIcon, data.name)
 				-- Anything with an experience requirement obviously should show it
 				elseif( data.experienced ) then
 					local experienceText
@@ -703,7 +702,7 @@ function Users:BuildAchievementPage()
 						if( data.childOf and not row.toggle:IsShown() ) then
 							row.nameText:SetFormattedText("- [|cff%02x%02x00%d%%|r] %s%s", r, g, percent * 100, heroicIcon, data.name)
 						else
-							row.nameText:SetFormattedText("[|cff%02x%02x00%d%%|r] %s%s%s", r, g, percent * 100, heroicIcon, data.name, players)
+							row.nameText:SetFormattedText("[|cff%02x%02x00%d%%|r] %s%s", r, g, percent * 100, heroicIcon, data.name)
 						end
 					-- An alt, fun times
 					else
@@ -726,7 +725,7 @@ function Users:BuildAchievementPage()
 						end
 					end
 					
-					row.tooltip = string.format(L["%s - %d-man %s (%s)"], experienceText, data.players, data.name, data.heroic and L["Heroic"] or L["Normal"])
+					row.tooltip = string.format("%s - %s (%s)", experienceText, data.name, data.heroic and L["Heroic"] or L["Normal"])
 					row.expandedInfo = achievementTooltips[data.id]
 				end
 				
@@ -800,7 +799,7 @@ function Users:BuildDungeonSuggestPage()
 		if( id >= offset ) then
 			local row = self.dungeonFrame.rows[rowID]
 			
-			local name, score, players, type = DungeonData.suggested[dataID], DungeonData.suggested[dataID + 1], DungeonData.suggested[dataID + 2], DungeonData.suggested[dataID + 3]
+			local name, score, raid, type = DungeonData.suggested[dataID], DungeonData.suggested[dataID + 1], DungeonData.suggested[dataID + 2], DungeonData.suggested[dataID + 3]
 			local levelDiff = score - equipmentData.totalScore
 			local percent = levelDiff <= 0 and 1 or levelDiff >= 30 and 0 or levelDiff <= 10 and 0.80 or levelDiff <= 20 and 0.50 or levelDiff <= 30 and 0.40
 			local r = (percent > 0.5 and (1.0 - percent) * 2 or 1.0) * 255
@@ -808,7 +807,7 @@ function Users:BuildDungeonSuggestPage()
 			local heroicIcon = (type == "heroic" or type == "hard") and "|TInterface\\LFGFrame\\UI-LFG-ICON-HEROIC:16:13:-2:-1:32:32:0:16:0:20|t" or ""
 			
 			row.dungeonName:SetFormattedText("%s|cff%02x%02x00%s|r", heroicIcon, r, g, name)
-			row.dungeonInfo:SetFormattedText(L["|cff%02x%02x00%d|r avg, %d-man (%s)"], r, g, score, players, DungeonData.types[type])
+			row.dungeonInfo:SetFormattedText(L["|cff%02x%02x00%d|r avg, %s (%s)"], r, g, score, raid and L["Raid"] or L["Dungeon"], DungeonData.types[type])
 			row:Show()
 
 			rowID = rowID + 1
