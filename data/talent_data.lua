@@ -19,7 +19,6 @@ local function loadData()
 	
 	-- required = How many of the talents the class needs
 	-- the number set for the talent is how many they need
-	-- Death Knights for example need capped Blade Barrier, Anticipation or Toughness, any 2 to be a tank
 	-- This isn't really perfect, if a Druid tries to hybrid it up then it's hard for us to figure out what spec they are
 	-- a good idea might be to force set their role based on the assignment they chose when possible, and use this as a fallback
 	Talents.specOverride = {

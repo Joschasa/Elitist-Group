@@ -206,108 +206,16 @@ local function loadData()
 	-- Allows overriding of items based on the presence of other items and in general, more complicated factors
 	local TRINKET1 = GetInventorySlotInfo("Trinket0Slot")
 	local TRINKET2 = GetInventorySlotInfo("Trinket1Slot")
-	local solaceIDs = {["47041"] = true, ["47059"] = true, ["47271"] = true, ["47432"] = true}
 	Items.situationalOverrides = {
-		-- Revitalizing Skyflare Diamond
-		["item:41376"] = function(type, userData, specType)
-			if( specType == "disc-priest" or specType == "resto-shaman" ) then return "healer" end
-			
-			return "situational-healer"
-			--[[
-			if( specType == "disc-priest" or specType == "resto-shaman" ) then return "healer" end
-			if( specType ~= "resto-shaman" ) then return "situational-healer" end
-			
-			-- As per: http://elitistjerks.com/f47/t24796-shaman_restoration/#Gems
-			-- One or more Solace trinkets makes Revitalizing Skyflare Diamond good for Shamans
-			local equipTrinket1 = userData.equipment[TRINKET1] and string.match(userData.equipment[TRINKET1], "item:(%d+)")
-			local equipTrinket2 = userData.equipment[TRINKET2] and string.match(userData.equipment[TRINKET2], "item:(%d+)")
-			if( ( equipTrinket1 and solaceIDs[equipTrinket1] ) or ( equipTrinket2 and solaceIDs[equipTrinket2] ) ) then
-				return "healer"
-			end
-			
-			return "situational-healer", L["Revitalizing meta requires a Solace of the Fallen/Defeated trinket for it to be a good meta gem for Restoration Shamans."]
-			]]
-		end,
-		-- Shiny Shard of the Flame
-		["item:49464"] = function(type, userData, specType)
-			local reverseType = type == TRINKET1 and TRINKET2 or TRINKET1
-			local trinket = userData.equipment[reverseType] and string.match(userData.equipment[reverseType], "item:(%d+)")
-			
-			-- 49488 Shiny Shard of the Scale / 49310 Purified Shard of the Scale
-			if( trinket == "49488" or trinket == "49310" ) then
-				return "caster"
-			end
-				
-			return "situational-caster", L["Purified/Shiny Shard of the Flame are only good if the player also has the \"of the Scale\" trinket."]
-		end,
+		-- removed for cata, examples can be found via github history ;)
 	}
-	
-	-- Purified Shard of the Flame
-	Items.situationalOverrides["item:49463"] = Items.situationalOverrides["item:49464"]
 
 	-- Certain items can't be classified with normal stat scans, you can specify a specific type using this
 	Items.itemOverrides = {
-		[47316] = "caster-dps", -- Reign of the Dead
-		[47477] = "caster-dps", -- Reign of the Dead (Heroic)
-		[50658] = "caster", -- Amulet of the Silent Eulogy
-		[48032] = "caster", -- Lightbane Focus
-		[50014] = "spirit/cloak", -- Greatcloak of the Turned Champion
-		[50668] = "spirit/cloak", -- Greatcloak of the Turned Champion (Heroic)
-		[50179] = "tank", -- Last Word
-		[25897] = "never", -- Bracing Earthsiege Diamond
-		[41389] = "never", -- Beaming Earthsiege Diamond
-		[35503] = "manaless", -- Ember Skyfire Diamond
-		[41333] = "manaless", -- Ember Skyflare Diamond
-		[50458] = "dps", -- Bizuri's Totem of Shattered Ice
-		[47666] = "dps", -- Totem of Electrifying Wind
-		[40707] = "tank", -- Libram of Obstruction
-		[32368] = "tank", -- Tome of the Lightbringer
-		[47661] = "tank/dps", -- Libram of Valiance
-		[50359] = "healer", -- Althor's Abacus
-		[50366] = "healer", -- Althor's Abacus (Heroic)
-		[44255] = "caster", -- Darkmoon Card: Greatness (+90 INT)
-		[44254] = "caster-spirit", -- Darkmoon Card: Greatness (+90 SPI)
-		[44253] = "tank/dps", -- Darkmoon Card: Greantess (+90 AGI)
-		[42987] = "tank/dps", -- Darkmoon Card: Greatness (+90 STR)
-		[47668] = "tank/dps", -- Idol of Mutilation
-		[50456] = "tank/dps", -- Idol of the Crying Moon
-		[38365] = "tank/dps", -- Idol of Perspicacious Attacks
-		[42604] = "caster-dps", -- Relentless Gladiator's Totem of Survival
-		[42603] = "caster-dps", -- Furious Gladiator's Totem of Survival
-		[42602] = "caster-dps", -- Deadly Gladiator's Totem of Survival
-		[42601] = "caster-dps", -- Hateful Gladiator's Totme of Survival
-		[42594] = "caster-dps", -- Savage Gladiator's Totem of Survival
-		[40322] = "melee-dps", -- Totem of Dueling, uses "Storm Strike" when it's "Stormstrike" why do you hate me so Blizard
-		[40714] = "tank", -- Sigil of the Unfaltering Knight
-		[25899] = "never", -- Brutal Earthstorm Diamond
-		[34220] = "dps", -- Chaotic Skyfire Diamond
-		[41285] = "dps", -- Chaotic Skyflare Diamond
-		[25890] = "never", -- Destructive Skyfire Diamond
-		[41307] = "never", -- Destructive Skyflare Diamond
-		[25895] = "never", -- Enigmatic Skyfire Diamond
-		[41335] = "never", -- Enigmatic Skyflare Diamond
-		[44081] = "never", -- Enigmatic Starflare Diamond
-		[41378] = "never", -- Forlorn Skyflare Diamond
-		[44084] = "never", -- Forlorn Starflare Diamond
-		[32641] = "never", -- Imbued Unstable Diamond
-		[41379] = "never", -- Impassive Skyflare Diamond
-		[44082] = "never", -- Impassive Starflare Diamond
-		[41385] = "never", -- Invigorating Earthsiege Diamond
-		[25893] = "never", -- Mystical Skyfire Diamond
-		[44087] = "never", -- Persistent Earthshatter Diamond
-		[41381] = "never", -- Persistent Earthsiege Diamond
-		[32640] = "never", -- Potent Unstable Diamond
-		[25894] = "never", -- Swift Skyfire Diamond
-		[41339] = "never", -- Swift Skyflare Diamond
-		[28557] = "never", -- Swift Starfire Diamond
-		[44076] = "never", -- Swift Starflare Diamond
-		[28556] = "never", -- Swift Windfire Diamond
-		[25898] = "never", -- Tenacious Earthstorm Diamond
-		[32410] = "never", -- Thundering Skyfire Diamond
-		[41400] = "never", -- Thundering Skyflare Diamond
-		[41375] = "never", -- Tireless Skyflare Diamond
-		[44078] = "never", -- Tireless Starflare Diamond
-		[44089] = "never", -- Trenchant Earthshatter Diamond
+		-- Trinkets + Items
+		[47316] = "caster-dps", -- Reign of the Dead (Caster Trinket)
+		[50658] = "caster", -- Amulet of the Silent Eulogy (Caster Neck)
+		-- Gems
 		[41382] = "never", -- Trenchant Earthsiege Diamond
 	}
 
