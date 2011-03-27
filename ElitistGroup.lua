@@ -408,7 +408,11 @@ function ElitistGroup:GetGeneralSummaryTooltip(equipmentData, gemData, enchantDa
 				equipText = equipmentData[equipText]
 			end
 			
-			table.insert(tempList, string.format(L["%s - |cffffffff%s|r item"], equipText, self.Items.itemRoleText[equipmentData[itemLink]] or equipmentData[itemLink]))
+			if( message == "wrongtype" ) then
+				table.insert(tempList, string.format(L["%s - Missing specialization bonus"], equipText))
+			else
+				table.insert(tempList, string.format(L["%s - |cffffffff%s|r item"], equipText, self.Items.itemRoleText[equipmentData[itemLink]] or equipmentData[itemLink]))
+			end
 		end
 		
 		equipmentTooltip = table.concat(tempList, "\n")
@@ -537,13 +541,13 @@ function ElitistGroup:GetGearSummary(userData)
 			end
 			
 			-- Check itemSubType for class-specific specialization
-			if( userData.level >= 50 and validSubTypeSlots and validSubTypeSlots[inventoryID] and itemSubType and itemSubType ~= validSubType ) then
+			if( userData.level >= 50 and validSubType and validSubType ~= L['Cloth'] and validSubTypeSlots and validSubTypeSlots[inventoryID] and itemSubType and itemSubType ~= validSubType ) then
 				equipment.pass = nil
 				equipment[itemLink] = itemTalent
 				equipment.totalBad = equipment.totalBad + 1
 				
 				table.insert(equipment, itemLink)
-				table.insert(equipment, suitMessage)
+				table.insert(equipment, "wrongtype")
 			end
 			
 			-- Either the item is not unenchantable period, or if it's unenchantable for everyone but a specific class

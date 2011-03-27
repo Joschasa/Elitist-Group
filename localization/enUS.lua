@@ -465,6 +465,7 @@ L["Cloth"] = "Cloth"
 L["Leather"] = "Leather"
 L["Mail"] = "Mail"
 L["Plate"] = "Plate"
+L["%s - Missing specialization bonus"] = "%s - Missing specialization bonus"
 
 
 ElitistGroup.L = L
