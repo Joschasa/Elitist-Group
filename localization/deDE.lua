@@ -447,5 +447,12 @@ L[ [=[You wrote %s ago:
 |cffffffff%s|r]=] ] = [=[Du schriebst vor %s
 |cffffffff%s|r]=]
 
+
+L["Cloth"] = "Stoff"
+L["Leather"] = "Leder"
+L["Mail"] = "Kette"
+L["Plate"] = "Platte"
+L["%s - Missing specialization bonus"] = "%s - Fehlender Spezialisierungsbonus"
+
 local ElitistGroup = select(2, ...)
 ElitistGroup.L = setmetatable(L, {__index = ElitistGroup.L})
