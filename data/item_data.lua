@@ -144,56 +144,9 @@ local function loadData()
 		return string.lower(name)
 	end
 
-	-- Hybrid relics should be listed in Items.itemOverrides
-	Items.relicSpells = {
-		[getSpell(8921)] = "caster-dps", -- Moonfire
-		[getSpell(2912)] = "caster-dps", -- Starfire
-		[getSpell(5176)] = "caster-dps", -- Wrath
-		[getSpell(6807)] = "feral-tank", -- Maul
-		[getSpell(50256)] = "tank/dps", -- Swipe
-		[getSpell(33917)] = "tank/dps", -- Mangle
-		[getSpell(1079) .. " "] = "melee-dps", -- Rip, the space is to stop this from matching "Riptide"
-		[getSpell(5221)] = "melee-dps", -- Shred
-		[getSpell(774)] = "healer", -- Rejuvenation
-		[getSpell(8936)] = "healer", -- Regrowth
-		[getSpell(33763)] = "healer", -- Lifebloom
-		[getSpell(48438)] = "healer", -- Wild Growth
-		[getSpell(50464)] = "healer", -- Nourish
-		[getSpell(5185)] = "healer", -- Healing Touch
-		
-		[getSpell(635)] = "healer", -- Holy Light
-		[getSpell(19750)] = "healer", -- Flash of Light
-		[getSpell(35395)] = "melee-dps", -- Crusader Strike
-		[getSpell(53385)] = "melee-dps", -- Divine Storm
-		[getSpell(53600)] = "tank", -- Shield of Righteousness
-		[getSpell(53595)] = "tank", -- Hammer of the Rightousness
-		[getSpell(31801)] = "tank", -- Seal of Vengeance
-		[getSpell(20925)] = "tank", -- Holy Shield
-		[getSpell(26573)] = "tank/dps", -- Consecration
-		
-		[getSpell(61295)] = "healer", -- Riptide
-		[getSpell(1064)] = "healer", -- Chain Heal
-		[getSpell(331)] = "healer", -- Healing Wave
-		[getSpell(8004)] = "healer", -- Lesser Healing Wave
-		[getSpell(8050)] = "caster-dps", -- Flame Shock
-		[getSpell(17364)] = "melee-dps", -- Stormstrike
-		[getSpell(60103)] = "melee-dps", -- Lava Lash
-		[getSpell(403)] = "caster-dps", -- Lightning Bolt
-		[getSpell(421)] = "caster-dps", -- Chain Lightning
-		[getSpell(51505)] = "caster-dps", -- Lava Burst
-		[getSpell(8232)] = "melee-dps", -- Windfury Weapon
-			
-		[getSpell(56815)] = "tank", -- Rune Strike
-		[getSpell(45902)] = "melee-dps", -- Blood Strike
-		[getSpell(45477)] = "melee-dps", -- Icy Touch
-		[getSpell(45462)] = "melee-dps", -- Plague Strike
-		[getSpell(66198)] = "melee-dps", -- Obliterate
-		[getSpell(49998)] = "melee-dps", -- Death Strike
-		
-	}
-
 	-- As with some items, some enchants have special text that doesn't tell you what they do so we need manual flagging
 	Items.enchantOverrides = {
+		
 		[3247] = "physical-dps", -- Scourgebane
 		[3826] = "all", -- Icewalker
 		[3253] = "tank", -- Armsman
