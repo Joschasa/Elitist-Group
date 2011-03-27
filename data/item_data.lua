@@ -22,7 +22,8 @@ local function loadData()
 	-- Item level of heirlooms based on the player's level. Currently this is ~2.22/per player level, meaning they work out to 187 item level blues at 80
 	-- with the quality modifier they are item level ~177
 	-- This will have to change come Cataclysm, not quite sure how Blizzard is going to handle heirlooms then
-	Items.heirloomLevel = (187 / 80)
+	-- History: Changed from (187 / 80) to (333 / 85) in Cataclysm. Should be enough...i want to look for potential raid members, not non hero dungeons
+	Items.heirloomLevel = (333 / 85)
 
 	Items.inventoryToID = {
 		["HeadSlot"] = "head", ["ChestSlot"] = "chest", ["RangedSlot"] = "ranged",
