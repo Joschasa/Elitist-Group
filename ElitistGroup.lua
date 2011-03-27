@@ -537,7 +537,7 @@ function ElitistGroup:GetGearSummary(userData)
 			end
 			
 			-- Check itemSubType for class-specific specialization
-			if( validSubTypeSlots and validSubTypeSlots[inventoryID] and itemSubType and itemSubType ~= validSubType ) then
+			if( userData.level >= 50 and validSubTypeSlots and validSubTypeSlots[inventoryID] and itemSubType and itemSubType ~= validSubType ) then
 				equipment.pass = nil
 				equipment[itemLink] = itemTalent
 				equipment.totalBad = equipment.totalBad + 1
