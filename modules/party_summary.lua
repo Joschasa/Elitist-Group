@@ -261,34 +261,6 @@ local function OnClick(self)
 	end
 end
 
---[[
-local function showElitistArmoryURL()
-	local names, realms = {(UnitName("player"))}, {GetRealmName()}
-	local diffRealms, realmText
-	
-	for i=1, GetNumPartyMembers() do
-		local name, realm = UnitName("party" .. i)
-		realm = realm and realm ~= "" and realm or GetRealmName()
-
-		-- See if we can "compress" the URl off the bat
-		if( realm ~= GetRealmName() ) then
-			diffRealms = true
-		end
-		
-		table.insert(names, name)
-		table.insert(realms, realm)
-	end
-	
-	if( diffRealms ) then
-		realmText = table.concat(realms, ",")
-	else
-		realmText = GetRealmName()
-	end
-	
-	ElitistGroup:ShowURLPopup(string.format("http://elitistarmory.com/gs/%s/%s/%s", ElitistGroup:GetRegion(), string.gsub(realmText, " ", "%%20"), string.gsub(table.concat(names, ","), " ", "%%20")), true)
-end
-]]
-
 local backdrop = {bgFile = "Interface\\ChatFrame\\ChatFrameBackground", edgeFile = "Interface\\ChatFrame\\ChatFrameBackground", edgeSize = 1}
 function Summary:CreateSingle(id)
 	if( self.summaryRows[id] ) then
@@ -423,18 +395,6 @@ function Summary:CreateUI()
 	frame.title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 	frame.title:SetPoint("TOP", 0, 0)
 	frame.title:SetText("Elitist Group")
-
---[[
-	local button = CreateFrame("Button", nil, frame, "GameMenuButtonTemplate")
-	button:SetWidth(40)
-	button:SetHeight(18)
-	button:SetPoint("TOPLEFT", frame, "TOPLEFT", 9, -8)
-	button:SetText(L["URL"])
-	button:SetScript("OnClick", showElitistArmoryURL)
-	button:SetScript("OnEnter", OnEnter)
-	button:SetScript("OnLeave", OnLeave)
-	button.tooltip = L["View the group on ElitistArmory.com"]
-]]
 
 	-- Close button
 	local button = CreateFrame("Button", nil, frame, "UIPanelCloseButton")

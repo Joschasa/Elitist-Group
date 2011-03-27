@@ -1077,18 +1077,6 @@ managePlayerNote = function()
 	SetDesaturation(frame.manageNote.roleDamage:GetNormalTexture(), bit.band(role, ElitistGroup.ROLE_DAMAGE) == 0)
 end
 
---[[
-local function showElitistArmoryURL(self)
-	local url = ElitistGroup:GetArmoryURL(userData.server, userData.name)
-	if( not url ) then
-		ElitistGroup:Print(L["Cannot find URL for this player, don't seem to have name, server or region data."])
-		return
-	end
-	
-	ElitistGroup:ShowURLPopup(url)
-end
-]]
-
 -- Really need to restructure all of this soon
 function Users:CreateUI()
 	if( Users.frame ) then
@@ -1422,19 +1410,6 @@ function Users:CreateUI()
 	talentInfo.highlight:SetVertexColor(1, 1, 1)
 	talentInfo.highlight:SetBlendMode("ADD")
 	]]
-
---[[
-	-- Elitist Armory hookin
-	local button = CreateFrame("Button", nil, infoFrame, "GameMenuButtonTemplate")
-	button:SetWidth(40)
-	button:SetHeight(15)
-	button:SetPoint("LEFT", infoFrame.playerInfo, "RIGHT", 6, 0)
-	button:SetText(L["URL"])
-	button:SetScript("OnClick", showElitistArmoryURL)
-	button:SetScript("OnEnter", OnEnter)
-	button:SetScript("OnLeave", OnLeave)
-	button.tooltip = L["View the player on ElitistArmory.com"]
-]]
 
 	-- Editing notes
 	local button = CreateFrame("Button", nil, infoFrame, "UIPanelButtonGrayTemplate")

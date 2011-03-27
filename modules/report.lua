@@ -156,7 +156,7 @@ local function reportSummary(self)
 		target = "CHANNEL"
 	end
 	
-	ChatThrottleLib:SendChatMessage("BULK", "EG", string.format(L["Elitist Group (%s): showing %d players, check out http://elitistarmory.com for more info. Format is, [name] (%s)"], ElitistGroup.version, #(queuedData), outputHelp), target, nil, channelID)
+	ChatThrottleLib:SendChatMessage("BULK", "EG", string.format(L["Elitist Group (%s): showing %d players. Format is, [name] (%s)"], ElitistGroup.version, #(queuedData), outputHelp), target, nil, channelID)
 	
 	-- Now do all of the actual work
 	local message = ""

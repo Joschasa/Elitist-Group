@@ -165,49 +165,10 @@ function ElitistGroup:OnInitialize()
 	self.modules.Sync:Setup()
 end
 
-function ElitistGroup:ShowURLPopup(url, long)
-	StaticPopupDialogs["ELITISTGROUP_URL"] = StaticPopupDialogs["ELITISTGROUP_URL"] or {
-		text = not long and "Elitist Armory URL" or "Elitist Armory URL. You will be given a shorter URL once you go to the site.",
-		button2 = CLOSE,
-		hasEditBox = 1,
-		hasWideEditBox = 1,
-		OnShow = function(self, url)
-			local editBox = _G[this:GetName() .. "WideEditBox"]
-			if( editBox ) then
-				editBox:SetText(url)
-				editBox:SetFocus()
-				editBox:HighlightText(0)
-			end
-			
-			local button = _G[this:GetName().."Button2"]
-			if( button ) then
-				button:ClearAllPoints()
-				button:SetWidth(200)
-				button:SetPoint("CENTER", editBox, "CENTER", 0, -30)
-			end
-		end,
-		EditBoxOnEscapePressed = function() this:GetParent():Hide() end,
-		timeout = 0,
-		whileDead = 1,
-		hideOnEscape = 1,
-		maxLetters = 1024,
-	}	
-	
-	StaticPopup_Show("ELITISTGROUP_URL", nil, nil, url)
-end
-
 local locale = GetLocale()
 function ElitistGroup:GetRegion()
 	local region = string.match(GetCVar("realmList"), "^(.-)%.")
 	return locale == "koKR" and "kr" or locale == "zhCN" and "cn" or locale == "zhTW" and "tw" or region
-end
-
-function ElitistGroup:GetArmoryURL(realm, name)
-	local region = self:GetRegion()
-	realm = string.gsub(realm, " ", "%%20")
-	name = string.gsub(name, " ", "%%20")
-	
-	return region and realm and name and string.format("http://elitistarmory.com/%s/%s/%s", region, realm, name)
 end
 
 -- Permissions, do we trust the person?
