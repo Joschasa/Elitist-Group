@@ -83,11 +83,10 @@ function Inspect:SetupTooltips()
 		local button = self[inventoryKey] or _G["Inspect" .. inventoryKey]
 		local itemLink = userData.equipment[inventoryID]
 		if( itemLink ) then
-			local baseItemLink = ElitistGroup:GetBaseItemLink(itemLink)
 			button.gemTooltip = gemTooltips[itemLink]
 			button.enchantTooltip = enchantTooltips[itemLink]
 			button.isBadType = equipmentData[itemLink] and "|cffff2020[!]|r " or ""
-			button.itemTalentType = ElitistGroup.Items.itemRoleText[ElitistGroup.ITEM_TALENTTYPE[baseItemLink]] or ElitistGroup.ITEM_TALENTTYPE[baseItemLink]
+			button.itemTalentType = ElitistGroup.Items.itemRoleText[ElitistGroup.ITEM_TALENTTYPE[itemLink]] or ElitistGroup.ITEM_TALENTTYPE[itemLink]
 			button.hasData = true
 		else
 			button.hasData = nil

@@ -516,7 +516,7 @@ function ElitistGroup:GetGearSummary(userData)
 			local equipID = self.Items.equipToType[itemEquipType]
 			local roleOverride = self.Items.roleOverrides[spec] and self.Items.roleOverrides[spec].type == equipID and self.Items.roleOverrides[spec]
 			-- Check if we have an override on this item
-			local itemTalent, suitMessage = getSituationalOverride(inventoryID, baseItemLink, self.ITEM_TALENTTYPE[baseItemLink], userData, spec)
+			local itemTalent, suitMessage = getSituationalOverride(inventoryID, baseItemLink, self.ITEM_TALENTTYPE[itemLink], userData, spec)
 			
 			-- Figure out the items slot name if necessary
 			if( ElitistGroup.db.profile.general.showSlotName ) then
@@ -680,7 +680,7 @@ function ElitistGroup:GetOptimizedSummary(userData)
 			totalGear = totalGear + 1	
 			totalLevel = totalLevel + self:CalculateScore(itemLink, itemQuality, itemLevel)
 			
-			local itemTalent = self.ITEM_TALENTTYPE[string.match(itemLink, "item:%d+")]
+			local itemTalent = self.ITEM_TALENTTYPE[itemLink]
 			local roleOverride = self.Items.roleOverrides[spec] and self.Items.roleOverrides[spec].type == self.Items.equipToType[itemEquipType] and self.Items.roleOverrides[spec]
 			if( itemTalent ~= "unknown" and not validSpecTypes[itemTalent] and ( not roleOverride or not roleOverride[itemTalent] ) ) then
 				totalBadGear = totalBadGear + 1

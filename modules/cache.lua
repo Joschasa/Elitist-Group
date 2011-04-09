@@ -193,6 +193,8 @@ enchantMetaTable = {
 
 itemMetaTable = {
 	__index = function(tbl, link)
+		link = ElitistGroup:GetBaseItemLink(link)
+		
 		local itemID = tonumber(string.match(link, "item:(%d+)"))
 		if( itemID and ItemData.itemOverrides[itemID] ) then
 			rawset(tbl, link, ItemData.itemOverrides[itemID])

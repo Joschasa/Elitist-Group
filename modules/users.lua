@@ -472,7 +472,6 @@ function Users:BuildEquipmentPage()
 			local itemLink = userData.equipment[slot.inventoryID]
 			local fullItemLink, itemQuality, itemLevel, _, _, _, _, itemEquipType, itemIcon = select(2, GetItemInfo(itemLink))
 			if( itemQuality and itemLevel ) then
-				local baseItemLink = ElitistGroup:GetBaseItemLink(itemLink)
 			
 				-- Now sum it all up
 				slot.tooltip = nil
@@ -480,7 +479,7 @@ function Users:BuildEquipmentPage()
 				slot.gemTooltip = gemTooltips[itemLink]
 				slot.enchantTooltip = enchantTooltips[itemLink]
 				slot.isBadType = equipmentData[itemLink] and "|cffff2020[!]|r " or ""
-				slot.itemTalentType = ElitistGroup.Items.itemRoleText[ElitistGroup.ITEM_TALENTTYPE[baseItemLink]] or ElitistGroup.ITEM_TALENTTYPE[baseItemLink]
+				slot.itemTalentType = ElitistGroup.Items.itemRoleText[ElitistGroup.ITEM_TALENTTYPE[itemLink]] or ElitistGroup.ITEM_TALENTTYPE[itemLink]
 				slot.situationalTooltip = ElitistGroup:GetSituationalTooltip(itemLink, equipmentData, gemData)
 				slot.fullItemLink = fullItemLink
 				slot.icon:SetTexture(itemIcon)
