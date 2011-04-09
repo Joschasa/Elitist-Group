@@ -64,7 +64,7 @@ local function matchStats(overrideType)
 	
 	for i=1, #(ItemData.statTalents) do
 		local data = ItemData.statTalents[i]
-		-- Only use this if other stats are present
+		-- Only use this if other (required) stats are present
 		if( not data.require or ( statCache[data.require] or ( data.require2 and statCache[data.require2] ) ) ) then
 			-- Only use this if it's the exclusive stat, for matching things like pure MP5 gems, not hybrids
 			if( not data.exclusive or totalStats == 1 ) then
