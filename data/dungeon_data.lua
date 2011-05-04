@@ -78,15 +78,15 @@ local function loadData()
 		{name = L["T11 Dungeons"], childOf = "dungeons", id = "t11-heroic", heroic = true, childless = true,
 			experienced = 35, -- 7 full clears
 			-- Since there are no statistic (# of kills for every last boss), i'll use the normal achievements here.
-			[5060] = 5, -- Blackrock Caverns
-			[5061] = 5, -- Throne of the Tides
-			[5062] = 5, -- Grim Batol
-			[5063] = 5, -- Stonecore
-			[5064] = 5, -- The Vortex Pinnacle
-			[5065] = 5, -- Halls of Origination
-			[5066] = 5, -- Lost City of the Tol'vir
-			[5083] = 5, -- Deadmines
-			[5093] = 5, -- Shadowfang Keep
+			[5725] = 5, -- Blackrock Caverns
+			[5727] = 5, -- Throne of the Tides
+			[5729] = 5, -- Stonecore
+			[5731] = 5, -- The Vortex Pinnacle
+			[5733] = 5, -- Grim Batol
+			[5735] = 5, -- Halls of Origination
+			[5737] = 5, -- Lost City of the Tol'vir
+			[5738] = 5, -- Deadmines
+			[5739] = 5, -- Shadowfang Keep
 			-- [4844] = 50, -- Cataclysm Dungeon Hero (every Heroic cleared)
 			-- [4845] = 100, -- Glory of the Cataclysm Hero (all the achievements ;) )
 		},
@@ -95,14 +95,26 @@ local function loadData()
 		{name = L["Raids"], parent = true, id = "raid"},
 		{name = L["Bastion of Twilight"], childOf = "10-man", id = "bot-10m",
 			experienced = 50, -- One time cleared
+			[5554] = 10, -- Halfus
+			[5567] = 10, -- Valiona & Theralion
+			[5569] = 10, -- Ascendant Council
+			[5572] = 10, -- Cho'Gall
 			[4850] = 50, -- "Every Boss killed"-Achievement
 		},
 		{name = L["Blackwing Descent"], childOf = "raid", id = "blackdesc-10m",
-			experienced = 50, -- One time cleared
+			experienced = 100, -- One time cleared
+			[5555] = 10, -- Magmaw
+			[5557] = 10, -- Omnotron
+			[5559] = 15, -- Maloriak
+			[5561] = 15, -- Atramedes
+			[5564] = 15, -- Chimaeron
+			[5565] = 40, -- Nefarian
 			[4842] = 50, -- "Every Boss killed"-Achievement
 		},
 		{name = L["Throne of the Four Winds"], childOf = "raid", id = "totfw-10m",
 			experienced = 50, -- One time cleared
+			[5575] = 10, -- Conclave
+			[5576] = 20, -- Al'Akir
 			[4851] = 50, -- "Every Boss killed"-Achievement
 		},
 		{name = L["Baradin Hold"], childOf = "raid", id = "bh-10m", subParent = true,
@@ -110,34 +122,34 @@ local function loadData()
 			-- [4016] = 20, -- Earth, Wind & Fire - perhaps there will be some achievement like this again?
 		},
 		{name = L["Pit Lord Argaloth"], childOf = "bh-10m", id = "argaloth-10m",
-			experienced = 5,
-			[5416] = 5, -- Pit Lord Argaloth
+			experienced = 50,
+			[5578] = 5, -- Pit Lord Argaloth
 		},
 			
 		-- heroic/hard mode raids
 		{name = L["Raids"], parent = true, id = "raid-hard", heroic = true},
 		{name = L["Bastion of Twilight"], childOf = "raid-hard", id = "bot-10m-h", cascade = "bot-10m", heroic = true,
-			experienced = 50, -- 2 + Cho'Gall or Sinestra
-			[5118] = 10, -- Halfus
-			[5117] = 10, -- Valiona & Theralion
-			[5119] = 10, -- Council
-			[5120] = 30, -- Cho'Gall
-			[5121] = 50, -- Sinestra
+			experienced = 100,
+			[5553] = 10, -- Halfus
+			[5568] = 10, -- Valiona & Theralion
+			[5570] = 20, -- Ascendant Council
+			[5571] = 30, -- Cho'Gall
+			[5573] = 50, -- Sinestra
 			[5313] = 50, -- Sinestra first attempt without any raid member died
 		},
 		{name = L["Blackwing Descent"], childOf = "raid-hard", id = "blackdesc-10m-h", cascade = "blackdesc-10m", heroic = true,
 			experienced = 40, -- 4 Bosses or Nefarian
-			[5094] = 10, -- Magmaw
-			[5107] = 10, -- Omnotron Defense System
-			[5115] = 10, -- Chimaeron
-			[5108] = 10, -- Maloriak
-			[5109] = 10, -- Atramedes
-			[5116] = 40, -- Nefarian
+			[5556] = 10, -- Magmaw
+			[5558] = 10, -- Omnotron
+			[5560] = 15, -- Maloriak
+			[5562] = 15, -- Atramedes
+			[5563] = 15, -- Chimaeron
+			[5566] = 40, -- Nefarian
 		},
 		{name = L["Throne of the Four Winds"], childOf = "raid-hard", id = "totfw-10m-h", cascade = "totfw-10m", heroic = true,
 			experienced = 30, -- One time cleared
-			[5122] = 10, -- Conclave of Wind
-			[5123] = 20, -- Al'Akir
+			[5574] = 10, -- Conclave
+			[5577] = 20, -- Al'Akir
 		},
 
 	}
