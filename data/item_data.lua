@@ -359,17 +359,22 @@ local function loadData()
 	table.sort(Items.orderedStatMap, function(a, b) return string.len(_G[a] or a) > string.len(_G[b] or b) end)
 
 	-- These are strings returned from GlobalStrings, ITEM_MOD_####_SHORT/####_NAME for GetItemStats, the ordering is important, do not mess with it
+	
+	-- exclusive -> the only stat on item
+	-- require + require2 -> another stat that has to be present
+	-- skipOn + skipOn2 -> another stat that is more important
+	
 	Items.statTalents = {
 		{type = "pvp",			default = "RESILIENCE_RATING@SPELL_PENETRATION@"},
+		{type = "tank",			default = "PARRY_RATING@DODGE_RATING@"},
 		{type = "elemental/pvp",gems = "STAMINA@", require = "ITEM_MOD_SPELL_POWER_SHORT", require2 = "ITEM_MOD_SPELL_DAMAGE_DONE_SHORT"},
 		{type = "all",			gems = "SPELL_STATALL@", enchants = "SPELL_STATALL@"},
 		{type = "never",		gems = "RESIST@"},
 		{type = "never",		gems = "MANA@", exclusive = true},
 		{type = "healer", 		gems = "MANA@", skipOn = "ITEM_MOD_INTELLECT_SHORT", skipOn2 = "ITEM_MOD_SPELL_POWER_SHORT"},
-		{type = "tank",			default = "DEFENSE_SKILL_RATING@PARRY_RATING@DODGE_RATING@", trinkets = "WHEN_HIT@"},
 		{type = "healer",		default = "SPELL_HEALING_DONE@", trinkets = "HELPFUL_SPELL@MAGICAL_HEALS@"},
 		{type = "caster-dps",	default = "HIT_SPELL_RATING@", trinkets = "HARMFUL_SPELL@PERIODIC_DAMAGE@SPELL_DAMAGE@"},
-		{type = "caster-dps",	default = "HIT_RATING@", require = "ITEM_MOD_SPELL_POWER_SHORT", require2 = "ITEM_MOD_SPELL_DAMAGE_DONE_SHORT"},
+		{type = "caster-dps",	default = "HIT_RATING@", require = "ITEM_MOD_INTELLECT_SHORT"},
 		{type = "melee-agi",	default = "AGILITY@"},
 		{type = "melee-str",	default = "STRENGTH@"},
 		{type = "physical-dps", default = "ARMOR_PENETRATION_RATING@", trinkets = "ATTACK@MELEE_OR_RANGE_DAMAGE@CHANCE_MELEE_OR_RANGE@MELEE_AND_RANGE@MELEE_AND_RANGE@"},
@@ -379,7 +384,7 @@ local function loadData()
 		{type = "caster-spirit",default = "SPIRIT@"},
 		{type = "caster",		default = "POWER_REGEN0@SPELL_DAMAGE_DONE@SPELL_POWER@MANA_REGENERATION@HASTE_SPELL_RATING@CRIT_SPELL_RATING@INTELLECT@", gems = "MANA@", enchants = "MANA@"},
 		{type = "caster",		default = "MANA@", require = "ITEM_MOD_SPELL_POWER_SHORT", require2 = "ITEM_MOD_SPELL_DAMAGE_DONE_SHORT"},
-		{type = "tank",			default = "PARRY_RATING@DODGE_RATING@DEFENSE_SKILL_RATING@BLOCK_RATING@BLOCK_VALUE@", enchants = "STAMINA@HEALTH@RESISTANCE0@", trinkets = "RESISTANCE0@STAMINA@", weapons = "RESISTANCE0@", rings = "RESISTANCE0"},
+		{type = "tank",			default = "PARRY_RATING@DODGE_RATING@BLOCK_RATING@BLOCK_VALUE@", enchants = "STAMINA@HEALTH@RESISTANCE0@", trinkets = "RESISTANCE0@STAMINA@", weapons = "RESISTANCE0@", rings = "RESISTANCE0"},
 		{type = "melee",		default = "EXPERTISE_RATING@"},
 		{type = "physical-dps",	default = "ATTACK_POWER@"},
 		{type = "melee-dps",	default = "HIT_MELEE_RATING@MELEE_ATTACK_POWER@STRENGTH@CRIT_MELEE_RATING@", trinkets = "MELEE_ATTACK@"},
