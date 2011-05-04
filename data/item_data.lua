@@ -242,7 +242,14 @@ local function loadData()
 		[4118] = "physical-all", -- Swordguard Embroidery Rank 2 - 1000 AP
 		
 		-- Leatherworking
+		[4124] = "tank", -- Twilight Leg Armor
 		[4127] = "tank", -- Charscale Leg Armor
+		
+		-- Enchants
+		[4075] = "physical-all", -- Gloves: 35 Str
+		[4106] = "physical-all", -- Gloves: 50 Str
+		
+		
 		
 		-- Old Enchants
 		[1896] = "never", -- Lifestealing
@@ -301,6 +308,8 @@ local function loadData()
 	-- Certain items can't be classified with normal stat scans, you can specify a specific type using this
 	Items.itemOverrides = {
 		-- Trinkets + Items
+		[56136] = "healer", -- Corrupted Egg Shell
+		[56463] = "healer", -- Corrupted Egg Shell (heroic)
 		[59354] = "healer", -- Jar of Ancient Remedys
 		[65029] = "healer", -- Jar of Ancient Remedys (heroic)
 		[59500] = "healer", -- Fall of Mortality
@@ -308,7 +317,7 @@ local function loadData()
 		[64645] = "healer", -- Tyrande's Favorite Doll
 		[58184] = "healer", -- Core of Ripeness
 		-- Gems
-		-- [41382] = "never", -- Trenchant Earthsiege Diamond
+		[52291] = "never", -- AGI/INT/STR are always superior
 	}
 
 	-- Map for checking stats on gems and enchants
