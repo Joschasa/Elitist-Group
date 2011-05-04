@@ -1,13 +1,9 @@
-## Interface: 30300
+## Interface: 40100
 ## Title: Elitist Group
 ## Notes: Provides quick access to information on your group and their equipment, enchant and gem choices.
-## Author: Shadowed
+## Author: Shadowed, Joschasa
 ## OptionalDeps: Ace3
 ## SavedVariables: ElitistGroupDB
-## X-Curse-Packaged-Version: v1.7.7-1-ge9aa6fe
-## X-Curse-Project-Name: Elitist Group
-## X-Curse-Project-ID: elitistgroup
-## X-Curse-Repository-ID: wow/elitistgroup/mainline
 
 #@no-lib-strip@
 libs\LibStub\LibStub.lua
