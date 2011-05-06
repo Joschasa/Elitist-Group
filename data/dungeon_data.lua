@@ -13,7 +13,8 @@ local function loadData()
 	Dungeons.suggested = {
 		-- thinking about removing this feature...we'll see...
 		-- name, ilvl, raid, difficulty
-		L["T11 Dungeons"],					346, false, "heroic",
+		L["T11 Dungeons"],					333, false, "heroic",
+		L["T11.5 Dungeons"],					346, false, "heroic",
 		L["Baradin Hold"],					359, true, "normal",
 		L["Bastion of Twilight"],			359, true, "normal",
 		L["Blackwing Descent"],				359, true, "normal",
@@ -77,7 +78,6 @@ local function loadData()
 		-- T11 Dungeons, 5 man, heroic (Deadmines, Grim Batol, ...)
 		{name = L["T11 Dungeons"], childOf = "dungeons", id = "t11-heroic", heroic = true, childless = true,
 			experienced = 35, -- 7 full clears
-			-- Since there are no statistic (# of kills for every last boss), i'll use the normal achievements here.
 			[5725] = 5, -- Blackrock Caverns
 			[5727] = 5, -- Throne of the Tides
 			[5729] = 5, -- Stonecore
@@ -89,6 +89,11 @@ local function loadData()
 			[5739] = 5, -- Shadowfang Keep
 			-- [4844] = 50, -- Cataclysm Dungeon Hero (every Heroic cleared)
 			-- [4845] = 100, -- Glory of the Cataclysm Hero (all the achievements ;) )
+		},
+		{name = L["T11.5 Dungeons"], childOf = "dungeons", id = "t115-heroic", heroic = true, childless = true,
+			experienced = 10,
+			[5773] = 5, -- Zul'Aman
+			[5774] = 5, -- Zul'Gurub
 		},
 		
 		-- raids
