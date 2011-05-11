@@ -7,10 +7,10 @@ local function loadData()
 	-- While it's true that we could apply additional modifiers like 1.05 for legendaries, it's not really necessary because legendaries aren't items
 	-- that people have 70% of their equipment as that need a modifier to separate them.
 	Items.qualityModifiers = {
-		[ITEM_QUALITY_POOR] = 0.50,
-		[ITEM_QUALITY_COMMON] = 0.60,
-		[ITEM_QUALITY_UNCOMMON] = 0.90,
-		[ITEM_QUALITY_RARE] = 0.95,
+		[ITEM_QUALITY_POOR] = 1, -- 0.50,
+		[ITEM_QUALITY_COMMON] = 1, -- 0.60,
+		[ITEM_QUALITY_UNCOMMON] = 1, -- 0.90,
+		[ITEM_QUALITY_RARE] = 1, -- 0.95,
 		[ITEM_QUALITY_EPIC] = 1,
 	}
 
