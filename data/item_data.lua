@@ -66,7 +66,7 @@ local function loadData()
 	-- while we will rate the enchant if one is present, it won't be flagged as they don't have it enchanted
 	-- Setting a class token means that it's unenchantable for everyone except that class
 	Items.unenchantableTypes = {
-		["INVTYPE_NECK"] = true, ["INVTYPE_FINGER"] = true, ["INVTYPE_TRINKET"] = true, ["INVTYPE_HOLDABLE"] = true, ["INVTYPE_THROWN"] = true, ["INVTYPE_RELIC"] = true, ["INVTYPE_WAIST"] = true,
+		["INVTYPE_NECK"] = true, ["INVTYPE_FINGER"] = true, ["INVTYPE_TRINKET"] = true, ["INVTYPE_THROWN"] = true, ["INVTYPE_RELIC"] = true, ["INVTYPE_WAIST"] = true,
 		["INVTYPE_RANGEDRIGHT"] = "HUNTER",
 		["INVTYPE_RANGED"] = "HUNTER",
 	}
