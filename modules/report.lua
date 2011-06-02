@@ -358,15 +358,14 @@ function Report:CreateUI()
 	levelFilter.configKey = "itemLevel"
 	levelFilter.menu = {
 		{value = "disabled", text = L["Don't include"], func = dropdownSelected},
-		{value = 300, arg1 = 300, text = string.format(L["<= %d"], 300), func = dropdownSelected},
-		{value = 270, arg1 = 270, text = string.format(L["<= %d"], 270), func = dropdownSelected},
-		{value = 260, arg1 = 260, text = string.format(L["<= %d"], 260), func = dropdownSelected},
-		{value = 250, arg1 = 250, text = string.format(L["<= %d"], 250), func = dropdownSelected},
-		{value = 240, arg1 = 240, text = string.format(L["<= %d"], 240), func = dropdownSelected},
-		{value = 230, arg1 = 230, text = string.format(L["<= %d"], 230), func = dropdownSelected},
-		{value = 220, arg1 = 220, text = string.format(L["<= %d"], 220), func = dropdownSelected},
-		{value = 210, arg1 = 210, text = string.format(L["<= %d"], 210), func = dropdownSelected},
-		{value = 200, arg1 = 200, text = string.format(L["<= %d"], 200), func = dropdownSelected},
+		{value = 330, arg1 = 330, text = string.format(L["<= %d"], 330), func = dropdownSelected},
+		{value = 340, arg1 = 340, text = string.format(L["<= %d"], 340), func = dropdownSelected},
+		{value = 350, arg1 = 350, text = string.format(L["<= %d"], 350), func = dropdownSelected},
+		{value = 360, arg1 = 360, text = string.format(L["<= %d"], 360), func = dropdownSelected},
+		{value = 370, arg1 = 370, text = string.format(L["<= %d"], 370), func = dropdownSelected},
+		{value = 380, arg1 = 380, text = string.format(L["<= %d"], 380), func = dropdownSelected},
+		{value = 390, arg1 = 390, text = string.format(L["<= %d"], 390), func = dropdownSelected},
+		{value = 400, arg1 = 400, text = string.format(L["<= %d"], 400), func = dropdownSelected},
 	}
 	initDropdown(levelFilter)
 	ElitistGroupReportItemLevelButton:SetScript("OnEnter", OnEnter)

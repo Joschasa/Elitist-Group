@@ -205,7 +205,7 @@ function ElitistGroup:IsTrusted(name)
 end
 
 function ElitistGroup:GetItemColor(itemLevel)
-	local quality = itemLevel >= 359 and ITEM_QUALITY_EPIC or itemLevel >= 333 and ITEM_QUALITY_RARE or itemLevel >= 275 and ITEM_QUALITY_UNCOMMON or ITEM_QUALITY_COMMON
+	local quality = itemLevel >= 355 and ITEM_QUALITY_EPIC or itemLevel >= 325 and ITEM_QUALITY_RARE or itemLevel >= 295 and ITEM_QUALITY_UNCOMMON or ITEM_QUALITY_COMMON
 	return ITEM_QUALITY_COLORS[quality].hex
 end
 

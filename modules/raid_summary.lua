@@ -182,7 +182,7 @@ function Summary:Update()
 				row.name.tooltip = row.name.tooltip .. "\n" .. L["Click to view detailed information."]
 				
 				if( summaryData.average >= 0 ) then
-					local quality = summaryData.average >= 210 and ITEM_QUALITY_EPIC or summaryData.average >= 195 and ITEM_QUALITY_RARE or summaryData.average >= 170 and ITEM_QUALITY_UNCOMMON or ITEM_QUALITY_COMMON
+					local quality = summaryData.average >= 355 and ITEM_QUALITY_EPIC or summaryData.average >= 325 and ITEM_QUALITY_RARE or summaryData.average >= 295 and ITEM_QUALITY_UNCOMMON or ITEM_QUALITY_COMMON
 					row.average:SetFormattedText("%s%d|r", ITEM_QUALITY_COLORS[quality].hex, summaryData.average)
 					row.average.tooltip = L["Average item level of the players equipment."]
 				else
