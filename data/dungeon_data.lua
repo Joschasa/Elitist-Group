@@ -22,6 +22,8 @@ local function loadData()
 		L["Bastion of Twilight"],			372, true, "heroic",
 		L["Blackwing Descent"],				372, true, "heroic",
 		L["Throne of the Four Winds"],		372, true, "heroic",
+		L["Firelands"],		378, true, "normal",
+		L["Firelands"],		391, true, "heroic",
 	}
 	
 	-- Remove any dungeons that aren't in the game yet
@@ -122,6 +124,16 @@ local function loadData()
 			[5576] = 20, -- Al'Akir
 			[4851] = 50, -- "Every Boss killed"-Achievement
 		},
+		{name = L["Firelands"], childOf = "raid", id = "fl-10m",
+			experienced = 110, -- One time cleared
+			[5964] = 10, -- Beth'tilac
+			[5966] = 10, -- Lord Rhyolith
+			[5970] = 10, -- Alysrazor
+			[5968] = 10, -- Shannox
+			[5972] = 20, -- Baleroc
+			[5974] = 20, -- Majordomo Staghelm
+			[5976] = 30, -- Ragnaros
+		},		
 		{name = L["Baradin Hold"], childOf = "raid", id = "bh-10m", subParent = true,
 			experienced = 5, -- every Boss killed once (only one inside atm)
 			-- [4016] = 20, -- Earth, Wind & Fire - perhaps there will be some achievement like this again?
@@ -156,7 +168,16 @@ local function loadData()
 			[5574] = 10, -- Conclave
 			[5577] = 20, -- Al'Akir
 		},
-
+		{name = L["Firelands"], childOf = "raid-hard", id = "fl-10m-h", cascade = "fl-10m", heroic = true,
+			experienced = 110, -- One time cleared
+			[5965] = 10, -- Beth'tilac
+			[5967] = 10, -- Lord Rhyolith
+			[5971] = 10, -- Alysrazor
+			[5969] = 10, -- Shannox
+			[5973] = 20, -- Baleroc
+			[5975] = 20, -- Majordomo Staghelm
+			[5977] = 30, -- Ragnaros
+		},	
 	}
 
 	-- Remove any dungeons that aren't in the game yet

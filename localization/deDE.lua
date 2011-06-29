@@ -453,6 +453,7 @@ L["Leather"] = "Leder"
 L["Mail"] = "Kette"
 L["Plate"] = "Platte"
 L["%s - Missing specialization bonus"] = "%s - Fehlender Spezialisierungsbonus"
+L["Firelands"] = "Feuerlande"
 
 local ElitistGroup = select(2, ...)
 ElitistGroup.L = setmetatable(L, {__index = ElitistGroup.L})
