@@ -1,4 +1,4 @@
-## Interface: 40100
+## Interface: 40200
 ## Title: Elitist Group
 ## Notes: Provides quick access to information on your group and their equipment, enchant and gem choices.
 ## Author: Shadowed, Joschasa
