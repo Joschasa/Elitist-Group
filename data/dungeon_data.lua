@@ -100,7 +100,7 @@ local function loadData()
 		
 		-- raids
 		{name = L["Raids"], parent = true, id = "raid"},
-		{name = L["Bastion of Twilight"], childOf = "10-man", id = "bot-10m",
+		{name = L["Bastion of Twilight"], childOf = "raid", id = "bot-10m",
 			experienced = 50, -- One time cleared
 			[5554] = 10, -- Halfus
 			[5567] = 10, -- Valiona & Theralion
